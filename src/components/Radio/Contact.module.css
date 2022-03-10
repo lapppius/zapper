@@ -1,0 +1,7 @@
+/* .phonesList {
+} */
+
+.ContactContainer li {
+    align-items: flex-start !important;
+    /* flex-flow: column wrap !important; */
+}

@@ -1,0 +1,71 @@
+#volumeControls {
+    display: grid;
+    /* justify-content: flex-start;*/
+    align-items: center; 
+    grid-template-columns: 1fr auto;
+    direction: rtl;
+}
+
+#volume {
+    position: relative;
+    margin: 0 !important;
+}
+
+#volumeSliderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 2.2rem;
+}
+
+#volumeSlider {
+    -webkit-appearance: none;
+    height: 0.2em;
+    border-radius: 1rem;
+    background: #a0a0a0;
+    outline: none;
+    padding: 0;
+    /* display: none; */
+    position: relative;
+    transform: translateX(100%);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    direction: ltr;
+}
+
+#volumeSlider:hover,
+#volume:hover + #volumeSliderContainer > #volumeSlider {
+    transform: translateX(0%);
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+#volumeSlider::-webkit-slider-thumb:hover {
+    width: 1.1em;
+    height: 1.1em;
+}
+#volumeSlider::-moz-range-thumb:hover {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+@media only screen and (max-width: 499px) {
+    #volumeSlider {
+        visibility: hidden;
+    }
+}

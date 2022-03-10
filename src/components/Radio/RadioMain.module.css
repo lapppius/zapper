@@ -1,0 +1,89 @@
+.radioMainContainer {
+    grid-area: radio_main_area;
+}
+
+.radioMainContainer > header,
+.radioDescription {
+    padding: 0.5rem 0;
+}
+
+.radioDescription {
+    grid-area: radio_description;
+    max-width: 650px;
+    /* align-self: flex-start; */
+}
+.radioMainContainer header {
+    display: grid;
+    align-items: center;
+    grid-gap: 0.8rem;
+    grid-template-rows: auto;
+}
+
+@media only screen and (min-width: 700px) {
+    .radioMainContainer header {
+        grid-template-columns: auto auto 1fr;
+        grid-template-areas:
+            'radio_logo_area radio_header_text_area radio_description'
+            'radio_logo_area radio_play_button_area radio_description';
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .radioMainContainer header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            'radio_logo_area radio_header_text_area '
+            'radio_logo_area radio_play_button_area '
+            'radio_description radio_description';
+    }
+}
+
+.headerText {
+    grid-area: radio_header_text_area;
+}
+
+.radioPlayButton {
+    grid-area: radio_play_button_area;
+}
+
+.headerText > h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+.headerText > h2 {
+    font-weight: 500;
+    font-size: 1.1rem;
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+}
+.radioDescription a {
+    color: #8bb5f8;
+
+    margin: 0 0 0 0.2rem;
+    text-decoration: none;
+}
+
+.radioDescription a:hover {
+    text-decoration: underline;
+}
+
+.headerButtons {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* .backgroundImage {
+    background-color: #8bb5f8;
+    position: absolute;
+    margin: -16px;
+    z-index: -1;
+    width: 100%;
+} */
+
+/* .backgroundImage > img {
+} */
