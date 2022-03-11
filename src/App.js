@@ -133,7 +133,7 @@ export default function App() {
     // }
 
     return (
-        // <StrictMode>
+        <StrictMode>
             <PlayerContext.Provider value={providerValue}>
                 <Layout>
                     <Routes>
@@ -146,6 +146,6 @@ export default function App() {
                     </Routes>
                 </Layout>
             </PlayerContext.Provider>
-        // </StrictMode>
+        </StrictMode>
     );
 }
