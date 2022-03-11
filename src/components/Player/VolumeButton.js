@@ -79,17 +79,6 @@ export default function VolumeButton() {
         }
     }, [volumeValue, mutedValue]);
 
-    // useEffect(() => {
-    //     const resizeObserver = new ResizeObserver((entries) => {
-    //         {
-    //             entries[0].contentRect.width < 500
-    //                 ? setIsMobile(true)
-    //                 : setIsMobile(false);
-    //         }
-    //     });
-    //     resizeObserver.observe(document.body);
-    // }, [document.body]);
-
     useEffect(() => {
         if (
             mobileFlag == false &&
@@ -122,18 +111,20 @@ export default function VolumeButton() {
                     <path d={volumeIcon} fill="#909090" />
                 </svg>
             </button>
-            <div id={styles['volumeSliderContainer']}>
-                <input
-                    title={`Ένταση ήχου ${Math.floor(volumeValue * 100)}%`}
-                    ref={volumeSliderRef}
-                    onChange={(e) => volumeSlider(e)}
-                    type="range"
-                    id={styles['volumeSlider']}
-                    min="0"
-                    max="1"
-                    defaultValue={volumeValue}
-                    step="0.01"
-                />
+            <div id={styles['volumeSliderOuterContainer']}>
+                <div id={styles['volumeSliderContainer']}>
+                    <input
+                        title={`Ένταση ήχου ${Math.floor(volumeValue * 100)}%`}
+                        ref={volumeSliderRef}
+                        onChange={(e) => volumeSlider(e)}
+                        type="range"
+                        id={styles['volumeSlider']}
+                        min="0"
+                        max="1"
+                        defaultValue={volumeValue}
+                        step="0.01"
+                    />
+                </div>
             </div>
         </div>
     );
