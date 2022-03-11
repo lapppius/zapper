@@ -16,6 +16,6 @@ export default function ShareButton(props) {
         }
     };
     return (
-        <>{isMobile == true ? <button onClick={Share}>Share</button> : ''}</>
+        <>{isMobile === true ? <button onClick={Share}>Share</button> : ''}</>
     );
 }

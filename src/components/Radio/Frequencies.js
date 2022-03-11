@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Frequencies.module.css';
 
 export default function Frequencies(props) {
@@ -16,7 +16,7 @@ export default function Frequencies(props) {
 
     return (
         <>
-            {fmList.length != 0 || mwList.length != 0 || swList.length != 0 ? (
+            {fmList.length !== 0 || mwList.length !== 0 || swList.length !==  0 ? (
                 <div className={styles.frequenciesListContainer}>
                     <span>
                         <svg

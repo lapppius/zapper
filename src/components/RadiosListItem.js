@@ -32,7 +32,7 @@ export default function RadiosListItem(props) {
         idToShort(props.id).then((res) => {
             setShortUrl(res);
         });
-    }, []);
+    }, [props.id]);
 
     return (
         <li
