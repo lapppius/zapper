@@ -15,6 +15,7 @@ export default function VolumeButton() {
     const volumeContainerRef = useRef(null);
     const volumeRef = useRef(null);
     const volumeSliderRef = useRef(null);
+    const volumeSliderContainerRef = useRef(null);
     let mobileFlag = false;
     let initialVolume = 0.49;
     let initialMuted = false;
@@ -27,7 +28,10 @@ export default function VolumeButton() {
     const [volumeIcon, setVolumeIcon] = useState(volumeUpIcon);
 
     function volumeButton(e) {
-        if (e.target !== volumeSliderRef.current) {
+        if (
+            e.target !== volumeSliderRef.current &&
+            e.target !== volumeSliderContainerRef.current
+        ) {
             if (isMobile) {
                 if (volumeSliderRef.current.value == 0) {
                     setVolumeValue(1);
@@ -112,7 +116,10 @@ export default function VolumeButton() {
                 </svg>
             </button>
             <div id={styles['volumeSliderOuterContainer']}>
-                <div id={styles['volumeSliderContainer']}>
+                <div
+                    id={styles['volumeSliderContainer']}
+                    ref={volumeSliderContainerRef}
+                >
                     <input
                         title={`Ένταση ήχου ${Math.floor(volumeValue * 100)}%`}
                         ref={volumeSliderRef}

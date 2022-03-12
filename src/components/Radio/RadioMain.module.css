@@ -15,7 +15,7 @@
 .radioMainContainer header {
     display: grid;
     align-items: center;
-    grid-gap: 0.8rem;
+    column-gap: 0.8rem;
     grid-template-rows: auto;
 }
 
