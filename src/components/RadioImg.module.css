@@ -32,7 +32,7 @@
     border-radius: 5rem;
     background: rgb(245, 245, 245);
     overflow: hidden;
-    border: 3px solid var(--dark-cyan-back);
+    outline: 4px solid #38383865;
 }
 
 .radioLogoContainer img {
