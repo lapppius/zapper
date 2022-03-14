@@ -22,9 +22,11 @@ export default function RadioMain(props) {
             style={{
                 background: `${
                     imgPalette != null
-                        ? `linear-gradient(180deg, rgba(${imgPalette.LightVibrant.getRgb().join(
+                        ? `linear-gradient(195deg, rgba(${imgPalette.LightVibrant.getRgb().join(
                               ','
-                          )},1) 0%
+                          )},1) 0%,rgba(${imgPalette.Vibrant.getRgb().join(
+                              ','
+                          )},1) 50%
                           ,rgba(${imgPalette.DarkVibrant.getRgb().join(
                               ','
                           )},1) 100%)`

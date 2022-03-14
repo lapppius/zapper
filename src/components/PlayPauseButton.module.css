@@ -28,11 +28,16 @@
     height: 2.8rem;
 }
 
-/* .radioPlayButton {
-    margin: 0;
-    border-radius: 1.5rem;
-    color: white;
-} */
+.radioPlayButton {
+    filter: drop-shadow(0 0 0 transparent);
+    backdrop-filter: blur(0px);
+    opacity: 100%;
+    background: linear-gradient(
+        60deg,
+        rgba(0, 139, 139, 0.515) 20%,
+        rgba(0, 160, 160, 0.727) 80%
+    );
+}
 
 .radioPlayButton svg {
     width: 3rem;

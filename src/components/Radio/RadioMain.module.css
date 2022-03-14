@@ -14,10 +14,10 @@
     row-gap: 0.5rem;
     grid-template-rows: auto;
     /* backdrop-filter: ; */
-    backdrop-filter: blur(100px) grayscale(0.2);
+    backdrop-filter: blur(120px);
     background: linear-gradient(
         180deg,
-        rgba(33, 33, 33, 0.1) 40%,
+        rgba(33, 33, 33, 0.1) 0%,
         rgba(33, 33, 33, 0.6) 100%
     );
     padding: 15px;
