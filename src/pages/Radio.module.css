@@ -12,7 +12,7 @@
 section {
     padding: 15px;
     /* border: 1px dotted; */
-    background-color: #202020;
+    background-color: var(--player-header-back);
 }
 
 @media only screen and (min-width: 500px) {
