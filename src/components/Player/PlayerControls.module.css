@@ -91,13 +91,13 @@ div#artworkDuration {
 
 /* Media Rules */
 @media (hover: hover) and (pointer: fine) {
-    #mainControls button:hover {
+    #controls button:hover {
         box-sizing: border-box;
         border-radius: 100%;
         background-color: #313131;
     }
 
-    #mainControls button:active {
+    #controls button:active {
         background-color: #505050;
         transition: 0.08s box-shadow ease-in-out;
         transition: 0.2s background-color ease-in-out;

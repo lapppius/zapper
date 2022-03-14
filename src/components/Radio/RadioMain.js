@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { fetchWikiSummary } from '../../FetchFunctions';
 
 export default function RadioMain(props) {
+    const [imgPalette, setImgPalette] = useState(null);
     const [wikiSummary, setWikiSummary] = useState(null);
     const wikiSummaryRef = useRef(null);
     useEffect(() => {
@@ -16,7 +17,21 @@ export default function RadioMain(props) {
     }, [wikiSummaryRef, props.title]);
 
     return (
-        <section className={styles.radioMainContainer}>
+        <section
+            className={styles.radioMainContainer}
+            style={{
+                background: `${
+                    imgPalette != null
+                        ? `linear-gradient(180deg, rgba(${imgPalette.LightVibrant.getRgb().join(
+                              ','
+                          )},1) 0%
+                          ,rgba(${imgPalette.DarkVibrant.getRgb().join(
+                              ','
+                          )},1) 100%)`
+                        : `linear-gradient(200deg, #6e6e6e, #171717)`
+                } `,
+            }}
+        >
             <header>
                 <div className={styles.headerText}>
                     <h1>{props.title}</h1>
@@ -28,6 +43,12 @@ export default function RadioMain(props) {
                     height="120px"
                     width="120px"
                     style="radioLogoContainer"
+                    // borderColor={
+                    //     imgPalette != null
+                    //         ? imgPalette.DarkVibrant.getRgb().join(',')
+                    //         : 'black'
+                    // }
+                    setImgPalette={setImgPalette}
                 />
                 <div className={styles.headerButtons}>
                     <PlayPauseButton

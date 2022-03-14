@@ -22,7 +22,7 @@ export default function Contact(props) {
                 setLongitude(props.location.lon);
             });
         }
-    }, [props]);
+    }, [props.location]);
 
     const loc = (
         <>

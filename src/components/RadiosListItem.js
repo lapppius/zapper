@@ -5,22 +5,7 @@ import { PlayerContext } from '../App';
 import { Link } from 'react-router-dom';
 import RadioImg from './RadioImg';
 import PlayingBars from './Animations/EqualizerIcon';
-
-const idToShort = (id) => {
-    return new Promise((resolve, reject) => {
-        fetch('wikisource.json')
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                for (const item of res) {
-                    if (item.wikiID === id) {
-                        resolve(encodeURI(item.name.replaceAll(' ', '_')));
-                    }
-                }
-            });
-    });
-};
+import { idToShort } from '../FetchFunctions';
 
 export default function RadiosListItem(props) {
     const playerContext = useContext(PlayerContext);

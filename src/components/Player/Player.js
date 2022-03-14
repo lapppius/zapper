@@ -65,6 +65,7 @@ export default function Player() {
     const audioElement = useRef(null);
     const playerContext = useContext(PlayerContext);
     const {
+        color,
         playing,
         streamUrl,
         audioContext,
@@ -123,7 +124,20 @@ export default function Player() {
     // }, [curId]);
 
     return (
-        <div id={styles['player']} className="player">
+        <div
+            id={styles['player']}
+            className="player"
+            style={{
+                background: `${
+                    color != null
+                        ? `rgba(${color.DarkVibrant.getRgb().join(
+                              ','
+                          )},0.2)`
+                        : 'transparent'
+                }`,
+
+            }}
+        >
             <NowPlaying />
             <audio
                 onCanPlay={() =>

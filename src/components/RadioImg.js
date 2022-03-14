@@ -2,6 +2,7 @@ import styles from './RadioImg.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { PlayerContext } from '../App';
 import { Link } from 'react-router-dom';
+import * as Vibrant from 'node-vibrant';
 
 const EL_WIKIPEDIA_API = 'https://el.wikipedia.org/w/api.php';
 const MAX_CACHE_AGE = 900;
@@ -29,7 +30,7 @@ function setImagesListPromise(title) {
                                 MAX_CACHE_AGE +
                                 '&titles=File:' +
                                 encodeURI(wikifileName) +
-                                '&prop=imageinfo&iiprop=url&iiurlwidth=115'
+                                '&prop=imageinfo&iiprop=url&iiurlwidth=125'
                         )
                             .then((response) => response.json())
                             .then((res) => {
@@ -57,36 +58,33 @@ export default function RadioImg(props) {
 
     useEffect(() => {
         if (radiosSession == null) {
-        setImagesListPromise(props.title).then((res) => {
-            setImgUrl(res);
-            let previous = JSON.parse(
-                sessionStorage.getItem('radiosListSes')
-            );
+            setImagesListPromise(props.title).then((res) => {
+                setImgUrl(res);
+                let previous = JSON.parse(
+                    sessionStorage.getItem('radiosListSes')
+                );
 
-            previous.forEach((element) => {
-                if (element.id == props.id) {
-                    element['imgUrl'] = res;
-                    sessionStorage.setItem(
-                        'radiosListSes',
-                        JSON.stringify(previous)
-                    );
+                previous.forEach((element) => {
+                    if (element.id == props.id) {
+                        element['imgUrl'] = res;
+                        sessionStorage.setItem(
+                            'radiosListSes',
+                            JSON.stringify(previous)
+                        );
+                    }
+                });
+            });
+        } else {
+            JSON.parse(radiosSession).forEach((element) => {
+                if (element.id === props.id) {
+                    setImgUrl(element.imgUrl);
                 }
             });
-        });
-        } else {
-        JSON.parse(radiosSession).forEach((element) => {
-            if (element.id === props.id) {
-                setImgUrl(element.imgUrl);
-            }
-        });
         }
     }, [props.id]);
 
     useEffect(() => {
-        if (
-            props.id === curId &&
-            curImg !== loadedImgUrl
-        ) {
+        if (props.id === curId && curImg !== loadedImgUrl) {
             playerContext.playerDispatch({
                 type: 'SET_CUR_IMG',
                 payload: loadedImgUrl,
@@ -94,15 +92,38 @@ export default function RadioImg(props) {
         }
     }, [curId, loadedImgUrl]);
 
+    const getVibrant = (e) => {
+        const src = e.target.src;
+
+        Vibrant.from(src)
+            .getPalette()
+            .then((palette) => {
+                if (props.setImgPalette) props.setImgPalette(palette);
+            });
+    };
     return (
-        <span className={`${styles[props.style]}`}>
-           {loadedImgUrl? <img
-                height={props.height}
-                width={props.width}
-                alt={'Λογότυπο - ' + props.title}
-                src={loadedImgUrl}
-                loading="lazy"
-            />:''}
+        <span
+            className={`${styles[props.style]}`}
+            // style={{
+            //     border: `4px solid ${
+            //         props.style == 'radioLogoContainer' && props.borderColor
+            //             ? `rgba(${props.borderColor},0.8)`
+            //             : '0'
+            //     }`,
+            // }}
+        >
+            {loadedImgUrl ? (
+                <img
+                    height={props.height}
+                    width={props.width}
+                    alt={'Λογότυπο - ' + props.title}
+                    src={loadedImgUrl}
+                    loading="lazy"
+                    onLoad={getVibrant}
+                />
+            ) : (
+                ''
+            )}
         </span>
     );
 }

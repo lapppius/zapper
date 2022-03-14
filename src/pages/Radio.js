@@ -6,23 +6,7 @@ import RadioMain from '../components/Radio/RadioMain';
 import RadioSide from '../components/Radio/RadioSide';
 import styles from './Radio.module.css';
 import { useState } from 'react';
-import { getWikidataEntityPromise } from '../FetchFunctions';
-
-const shortToId = (short) => {
-    return new Promise((resolve, reject) => {
-        fetch('wikisource.json')
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                for (const item of res) {
-                    if (item.name === short.replaceAll('_', ' ')) {
-                        resolve(item.wikiID);
-                    }
-                }
-            });
-    });
-};
+import { getWikidataEntityPromise, shortToId } from '../FetchFunctions';
 
 function getRadioInfoPromise(res) {
     return new Promise((resolve, reject) => {

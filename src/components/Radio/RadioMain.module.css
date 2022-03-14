@@ -13,6 +13,14 @@
     column-gap: 0.8rem;
     row-gap: 0.5rem;
     grid-template-rows: auto;
+    /* backdrop-filter: ; */
+    backdrop-filter: blur(100px);
+    background: linear-gradient(
+        180deg,
+        rgba(33, 33, 33, 0.1) 45%,
+        rgba(33, 33, 33, 0.65) 100%
+    );
+    padding: 15px;
 }
 
 @media only screen and (min-width: 700px) {

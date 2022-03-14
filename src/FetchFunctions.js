@@ -1,6 +1,6 @@
 const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
 const LANG = 'el';
-const MAX_CACHE_AGE = 0;
+const MAX_CACHE_AGE = 900;
 const idsTest = JSON.parse(sessionStorage.getItem('idsTest'));
 
 // Get the wikidata IDs for every radio station in an array of object
@@ -100,3 +100,35 @@ export function fetchWikiSummary(title) {
         }
     });
 }
+
+export const shortToId = (short) => {
+    return new Promise((resolve, reject) => {
+        fetch('wikisource.json')
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                for (const item of res) {
+                    if (item.name === short.replaceAll('_', ' ')) {
+                        resolve(item.wikiID);
+                    }
+                }
+            });
+    });
+};
+
+export const idToShort = (id) => {
+    return new Promise((resolve, reject) => {
+        fetch('wikisource.json')
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                for (const item of res) {
+                    if (item.wikiID === id) {
+                        resolve(encodeURI(item.name.replaceAll(' ', '_')));
+                    }
+                }
+            });
+    });
+};

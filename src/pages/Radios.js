@@ -36,7 +36,7 @@ export default function Radios() {
         // } else {
         //     console.log(test1);
         // }
-    }, []);
+    }, [radiosSession]);
 
     return <>{isLoading ? undefined : <RadiosList radios={loadedRadios} />}</>;
 }

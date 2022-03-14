@@ -1,6 +1,5 @@
 import RadiosListItem from './RadiosListItem';
 import styles from './RadiosList.module.css';
-import { useEffect, useRef } from 'react';
 
 export default function RadiosList(props) {
     return (
