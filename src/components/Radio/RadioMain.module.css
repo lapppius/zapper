@@ -14,7 +14,7 @@
     row-gap: 0.5rem;
     grid-template-rows: auto;
     /* backdrop-filter: ; */
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px) grayscale(0.2);
     background: linear-gradient(
         180deg,
         rgba(33, 33, 33, 0.1) 45%,
