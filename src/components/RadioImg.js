@@ -30,7 +30,7 @@ function setImagesListPromise(title) {
                                 MAX_CACHE_AGE +
                                 '&titles=File:' +
                                 encodeURI(wikifileName) +
-                                '&prop=imageinfo&iiprop=url&iiurlwidth=125'
+                                '&prop=imageinfo&iiprop=url&iiurlwidth=120'
                         )
                             .then((response) => response.json())
                             .then((res) => {
@@ -104,13 +104,13 @@ export default function RadioImg(props) {
     return (
         <span
             className={`${styles[props.style]}`}
-            // style={{
-            //     border: `4px solid ${
-            //         props.style == 'radioLogoContainer' && props.borderColor
-            //             ? `rgba(${props.borderColor},0.8)`
-            //             : '0'
-            //     }`,
-            // }}
+            style={{
+                border: `4px solid ${
+                    props.style == 'radioLogoContainer' && props.borderColor
+                        ? `rgba(${props.borderColor},0.7)`
+                        : '0'
+                }`,
+            }}
         >
             {loadedImgUrl ? (
                 <img

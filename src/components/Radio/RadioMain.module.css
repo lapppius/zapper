@@ -2,6 +2,10 @@
     grid-area: radio_main_area;
 }
 
+/* .radioMainContainer *:not(button) {
+    filter: drop-shadow(0 1px 0px rgb(0 0 0 / 15%));
+} */
+
 .radioDescription {
     grid-area: radio_description;
     max-width: 650px;
@@ -9,37 +13,21 @@
 }
 .radioMainContainer header {
     display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        'radio_logo_area radio_header_text_area '
+        'radio_logo_area radio_play_button_area '
+        'radio_description radio_description';
     align-items: center;
     column-gap: 0.8rem;
     row-gap: 0.5rem;
-    grid-template-rows: auto;
-    /* backdrop-filter: ; */
-    backdrop-filter: blur(120px);
-    background: linear-gradient(
-        180deg,
-        rgba(33, 33, 33, 0.1) 0%,
-        rgba(33, 33, 33, 0.6) 100%
-    );
+
+    /* backdrop-filter: blur(20px); */
+
+    background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, var(--body-back) 100%),
+        var(--background-noise);
     padding: 15px;
-}
-
-@media only screen and (min-width: 700px) {
-    .radioMainContainer header {
-        grid-template-columns: auto auto 1fr;
-        grid-template-areas:
-            'radio_logo_area radio_header_text_area radio_description'
-            'radio_logo_area radio_play_button_area radio_description';
-    }
-}
-
-@media only screen and (max-width: 699px) {
-    .radioMainContainer header {
-        grid-template-columns: auto 1fr;
-        grid-template-areas:
-            'radio_logo_area radio_header_text_area '
-            'radio_logo_area radio_play_button_area '
-            'radio_description radio_description';
-    }
 }
 
 .headerText {

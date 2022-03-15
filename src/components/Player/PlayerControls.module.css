@@ -21,6 +21,7 @@
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    transition: all 0.1s ease-in-out;
 }
 
 #controls svg {
@@ -94,14 +95,15 @@ div#artworkDuration {
     #controls button:hover {
         box-sizing: border-box;
         border-radius: 100%;
-        background-color: #313131;
+        background-color: #75757530;
+
     }
 
     #controls button:active {
         background-color: #505050;
         transition: 0.08s box-shadow ease-in-out;
         transition: 0.2s background-color ease-in-out;
-        box-shadow: 0 0 1px 1px #868686;
+        box-shadow: 0 0 2px 1px #868686;
         transform: scale(0.9);
     }
 }

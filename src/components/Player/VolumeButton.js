@@ -16,6 +16,8 @@ export default function VolumeButton() {
     const volumeRef = useRef(null);
     const volumeSliderRef = useRef(null);
     const volumeSliderContainerRef = useRef(null);
+    const volumeSliderOuterContainerRef = useRef(null);
+
     let mobileFlag = false;
     let initialVolume = 0.49;
     let initialMuted = false;
@@ -30,7 +32,8 @@ export default function VolumeButton() {
     function volumeButton(e) {
         if (
             e.target !== volumeSliderRef.current &&
-            e.target !== volumeSliderContainerRef.current
+            e.target !== volumeSliderContainerRef.current &&
+            e.target !== volumeSliderOuterContainerRef.current
         ) {
             if (isMobile) {
                 if (volumeSliderRef.current.value == 0) {
@@ -115,7 +118,10 @@ export default function VolumeButton() {
                     <path d={volumeIcon} fill="#909090" />
                 </svg>
             </button>
-            <div id={styles['volumeSliderOuterContainer']}>
+            <div
+                id={styles['volumeSliderOuterContainer']}
+                ref={volumeSliderOuterContainerRef}
+            >
                 <div
                     id={styles['volumeSliderContainer']}
                     ref={volumeSliderContainerRef}

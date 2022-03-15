@@ -9,15 +9,16 @@
 }
 
 .radioContent aside,
-section {
-    /* padding: 15px; */
+section:not(:first-child) {
+    padding: 15px;
     /* border: 1px dotted; */
     background-color: var(--player-header-back);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
 }
 
 @media only screen and (min-width: 500px) {
     .radioContent {
-        grid-template-columns: 3.5fr 1fr ;
+        grid-template-columns: 3.5fr 1fr;
         grid-template-areas:
             'radio_main_area radio_main_area'
             'radio_epg_area radio_side_area'

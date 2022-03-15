@@ -22,7 +22,7 @@ export default function RadioMain(props) {
             style={{
                 background: `${
                     imgPalette != null
-                        ? `linear-gradient(195deg, rgba(${imgPalette.LightVibrant.getRgb().join(
+                        ? `linear-gradient(185deg, rgba(${imgPalette.LightVibrant.getRgb().join(
                               ','
                           )},1) 0%,rgba(${imgPalette.Vibrant.getRgb().join(
                               ','
@@ -30,7 +30,7 @@ export default function RadioMain(props) {
                           ,rgba(${imgPalette.DarkVibrant.getRgb().join(
                               ','
                           )},1) 100%)`
-                        : `linear-gradient(200deg, #6e6e6e, #171717)`
+                        : `linear-gradient(192deg, #6e6e6e, #171717)`
                 } `,
             }}
         >
@@ -45,11 +45,11 @@ export default function RadioMain(props) {
                     height="120px"
                     width="120px"
                     style="radioLogoContainer"
-                    // borderColor={
-                    //     imgPalette != null
-                    //         ? imgPalette.DarkVibrant.getRgb().join(',')
-                    //         : 'black'
-                    // }
+                    borderColor={
+                        imgPalette != null
+                            ? imgPalette.LightVibrant.getRgb().join(',')
+                            : 'black'
+                    }
                     setImgPalette={setImgPalette}
                 />
                 <div className={styles.headerButtons}>

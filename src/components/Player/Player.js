@@ -130,9 +130,9 @@ export default function Player() {
             style={{
                 background: `${
                     color != null
-                        ? `rgba(${color.DarkVibrant.getRgb().join(
+                        ? `rgba(${color.Vibrant.getRgb().join(
                               ','
-                          )},0.2)`
+                          )},0.15)`
                         : 'transparent'
                 }`,
 
