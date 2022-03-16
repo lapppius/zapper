@@ -60,7 +60,7 @@ const NOW_PLAYING_API = 'https://proxy-ert.vercel.app/api/nowPlaying?id=';
 
 function getNowPlayingTitle(prevPlayingID) {
     return new Promise((resolve, reject) => {
-        fetch('wikisource.json')
+        fetch('wikisource.json', { cache: 'force-cache' })
             .then((res) => {
                 return res.json();
             })
@@ -100,10 +100,10 @@ export default function NowPlaying() {
                 setNowPlayingTitle(res);
             });
         }
-    }, [ playing, waiting, curId]);
+    }, [playing, waiting, curId]);
 
     useEffect(() => {
-        if (waiting === true || playing===false) {
+        if (waiting === true || playing === false) {
             setNowPlayingTitle(undefined);
         }
     }, [playing, waiting]);

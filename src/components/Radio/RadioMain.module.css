@@ -9,33 +9,50 @@
 .radioDescription {
     grid-area: radio_description;
     max-width: 650px;
-    /* align-self: flex-start; */
 }
 .radioMainContainer header {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
-    grid-template-areas:
-        'radio_logo_area radio_header_text_area '
-        'radio_logo_area radio_play_button_area '
-        'radio_description radio_description';
-    align-items: center;
     column-gap: 0.8rem;
     row-gap: 0.5rem;
-
-    /* backdrop-filter: blur(20px); */
-
     background: linear-gradient(rgba(0, 0, 0, 0.3) 0%, var(--body-back) 100%),
         var(--background-noise);
     padding: 15px;
 }
 
+@media only screen and (min-width: 600px) {
+    .radioMainContainer header {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'radio_logo_area radio_header_text_area '
+            'radio_logo_area radio_description'
+            'radio_logo_area radio_button_area';
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .radioMainContainer header {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'radio_logo_area radio_logo_area  '
+            'radio_header_text_area radio_header_text_area'
+            'radio_description radio_description'
+            'radio_button_area radio_button_area';
+        justify-items: center;
+    }
+    .radioDescription {
+        text-align: center;
+    }
+}
 .headerText {
     grid-area: radio_header_text_area;
 }
 
 .radioPlayButton {
-    grid-area: radio_play_button_area;
 }
 
 .headerText > h1 {
@@ -63,10 +80,11 @@
 }
 
 .headerButtons {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    gap: 0.5rem;
+    /* display: flex; */
+    /* flex-flow: row wrap; */
+    /* align-items: center; */
+    /* gap: 0.5rem; */
+    grid-area: radio_button_area;
 }
 
 /* .backgroundImage {

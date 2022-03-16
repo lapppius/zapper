@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Vibrant from 'node-vibrant';
 
 const EL_WIKIPEDIA_API = 'https://el.wikipedia.org/w/api.php';
-const MAX_CACHE_AGE = 900;
+const MAX_CACHE_AGE = 3600;
 
 function setImagesListPromise(title) {
     return new Promise((resolve, reject) => {

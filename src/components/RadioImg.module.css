@@ -26,8 +26,8 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    height: 120px;
-    width: 120px;
+    height: 150px;
+    width: 150px;
     position: relative;
     border-radius: 5rem;
     background: rgb(245, 245, 245);

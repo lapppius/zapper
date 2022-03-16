@@ -103,7 +103,7 @@ export function fetchWikiSummary(title) {
 
 export const shortToId = (short) => {
     return new Promise((resolve, reject) => {
-        fetch('wikisource.json')
+        fetch('wikisource.json', { cache: 'force-cache' })
             .then((res) => {
                 return res.json();
             })
@@ -119,7 +119,7 @@ export const shortToId = (short) => {
 
 export const idToShort = (id) => {
     return new Promise((resolve, reject) => {
-        fetch('wikisource.json')
+        fetch('wikisource.json', { cache: 'force-cache' })
             .then((res) => {
                 return res.json();
             })

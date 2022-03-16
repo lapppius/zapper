@@ -50,10 +50,9 @@ export default function RadiosListItem(props) {
                     />
                 </span>
             </div>
-            {}
 
             <Link to={`/${shortUrl != null ? shortUrl : ''}`}>
-                <p>{props.title}</p>
+                <p className={styles}>{props.title}</p>
             </Link>
             <span
                 style={{

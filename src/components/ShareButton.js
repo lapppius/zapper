@@ -4,7 +4,7 @@ import { PlayerContext } from '../App';
 export default function ShareButton(props) {
     const { isMobile } = useContext(PlayerContext).playerState;
     const Share = () => {
-        if (navigator.share) {
+        if (navigator.share && isMobile) {
             navigator
                 .share({
                     title: props.title,
@@ -13,9 +13,8 @@ export default function ShareButton(props) {
                 })
                 .then(() => console.log('Successful share'))
                 .catch((error) => console.log('Error sharing', error));
+        } else {
         }
     };
-    return (
-        <>{isMobile === true ? <button onClick={Share}>Share</button> : ''}</>
-    );
+    return <button onClick={Share}>Share</button>;
 }

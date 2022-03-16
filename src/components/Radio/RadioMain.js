@@ -42,8 +42,8 @@ export default function RadioMain(props) {
                     title={props.title}
                     id={props.id}
                     url={undefined}
-                    height="120px"
-                    width="120px"
+                    height="150px"
+                    width="150px"
                     style="radioLogoContainer"
                     borderColor={
                         imgPalette != null
@@ -58,7 +58,7 @@ export default function RadioMain(props) {
                         id={props.id}
                         streamUrl={props.streamUrl}
                     />
-                    <ShareButton {...props} />
+                    {/* <ShareButton {...props} /> */}
                 </div>
                 <p className={styles.radioDescription} ref={wikiSummaryRef}>
                     {wikiSummary}
