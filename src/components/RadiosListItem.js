@@ -9,7 +9,7 @@ import { idToShort } from '../FetchFunctions';
 
 export default function RadiosListItem(props) {
     const playerContext = useContext(PlayerContext);
-    const { playing, waiting, curId } = playerContext.playerState;
+    const { playing, waiting, curId, time } = playerContext.playerState;
     const liRef = useRef(null);
     const [shortUrl, setShortUrl] = useState(null);
 
@@ -54,10 +54,11 @@ export default function RadiosListItem(props) {
             <Link to={`/${shortUrl != null ? shortUrl : ''}`}>
                 <p className={styles}>{props.title}</p>
             </Link>
-            {playing && !waiting && curId === props.id ? 
-            <span className={styles.equalizerWrapper}>
-                <PlayingBars />
-            </span>:null}
+            {playing && !waiting && time !== null && curId === props.id ? (
+                <span className={styles.equalizerWrapper}>
+                    <PlayingBars />
+                </span>
+            ) : null}
         </li>
     );
 }

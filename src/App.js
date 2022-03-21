@@ -69,7 +69,7 @@ const reducer = (state, action) => {
             return { ...state, waiting: true };
         case 'SET_PAUSE':
             console.log('paused');
-            return { ...state, playing: false, time: 0 };
+            return { ...state, playing: false, time: null };
         case 'TIMEUPDATE':
             return { ...state, time: action.payload };
         case 'SET_CUR_IMG':
