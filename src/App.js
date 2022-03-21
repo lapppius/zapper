@@ -100,7 +100,7 @@ export default function App() {
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
             {
-                entries[0].contentRect.width < 500
+                entries[0].contentRect.width < 599
                     ? playerDispatch({
                           type: 'SET_IS_MOBILE',
                           payload: true,
