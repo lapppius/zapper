@@ -54,16 +54,10 @@ export default function RadiosListItem(props) {
             <Link to={`/${shortUrl != null ? shortUrl : ''}`}>
                 <p className={styles}>{props.title}</p>
             </Link>
-            <span
-                style={{
-                    opacity: `${
-                        playing && !waiting && curId === props.id ? '1' : '0'
-                    }`,
-                }}
-                className={styles.equalizerWrapper}
-            >
+            {playing && !waiting && curId === props.id ? 
+            <span className={styles.equalizerWrapper}>
                 <PlayingBars />
-            </span>
+            </span>:null}
         </li>
     );
 }
