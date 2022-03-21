@@ -19,15 +19,16 @@ export default function PlayerControls() {
         'M12 25Q11 25 11 24L11 12Q11 11 12 11L24 11Q25 11 25 12L25 24Q25 25 24 25';
     const waitingIcon =
         'M73 50c0-12.7-10.3-23-23-23S27 37.3 27 50M30.9 50c0-10.5 8.5-19.1 19.1-19.1S69.1 39.5 69.1 50';
-    const getVibrant = (e) => {
-        const src = e.target.src;
 
-        Vibrant.from(src)
-            .getPalette()
-            .then((palette) => {
-                setImgPalette(palette);
-            });
-    };
+    useEffect(() => {
+        if (curImg !== undefined) {
+            Vibrant.from(curImg)
+                .getPalette()
+                .then((palette) => {
+                    setImgPalette(palette);
+                });
+        }
+    }, [curImg]);
 
     useEffect(() => {
         playerContext.playerDispatch({
@@ -46,7 +47,7 @@ export default function PlayerControls() {
                                 src={curImg}
                                 height="50px"
                                 width="50px"
-                                onLoad={getVibrant}
+                                // onLoad={getVibrant}
                             />
                         ) : (
                             ''

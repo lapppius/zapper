@@ -1,7 +1,6 @@
 import styles from './RadioImg.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { PlayerContext } from '../App';
-import { Link } from 'react-router-dom';
 import * as Vibrant from 'node-vibrant';
 
 const EL_WIKIPEDIA_API = 'https://el.wikipedia.org/w/api.php';
@@ -53,7 +52,7 @@ function setImagesListPromise(title) {
 export default function RadioImg(props) {
     const [loadedImgUrl, setImgUrl] = useState(null);
     const playerContext = useContext(PlayerContext);
-    const { curId, curImg, playing } = playerContext.playerState;
+    const { curId, curImg } = playerContext.playerState;
     const radiosSession = sessionStorage.getItem('radiosListSes');
 
     useEffect(() => {
@@ -81,7 +80,7 @@ export default function RadioImg(props) {
                 }
             });
         }
-    }, [props.id]);
+    }, [props.id,radiosSession,props.title]);
 
     useEffect(() => {
         if (props.id === curId && curImg !== loadedImgUrl) {
@@ -90,17 +89,17 @@ export default function RadioImg(props) {
                 payload: loadedImgUrl,
             });
         }
-    }, [curId, loadedImgUrl]);
+    }, [curId, loadedImgUrl,curImg,playerContext,props.id]);
 
-    const getVibrant = (e) => {
-        const src = e.target.src;
-
-        Vibrant.from(src)
-            .getPalette()
-            .then((palette) => {
-                if (props.setImgPalette) props.setImgPalette(palette);
-            });
-    };
+    useEffect(() => {
+        if (loadedImgUrl !== null) {
+            Vibrant.from(loadedImgUrl)
+                .getPalette()
+                .then((palette) => {
+                    if (props.setImgPalette) props.setImgPalette(palette);
+                });
+        }
+    }, [loadedImgUrl]);
     return (
         <span
             className={`${styles[props.style]}`}
@@ -119,7 +118,6 @@ export default function RadioImg(props) {
                     alt={'Λογότυπο - ' + props.title}
                     src={loadedImgUrl}
                     loading="lazy"
-                    onLoad={getVibrant}
                 />
             ) : (
                 ''
