@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import RadioComments from '../components/Radio/RadioComments';
 import RadioEpg from '../components/Radio/RadioEPG';
-import RadioMain from '../components/Radio/RadioMain';
 import RadioSide from '../components/Radio/RadioSide';
+import RadioHeader from '../components/Radio/RadioHeader';
 import styles from './Radio.module.css';
 import { useState } from 'react';
 import { getWikidataEntityPromise, shortToId } from '../FetchFunctions';
@@ -189,7 +189,7 @@ export const Radio = () => {
     }, [short]);
     return (
         <div className={styles.radioContent} ref={radioRef}>
-            <RadioMain {...loadedRadio} />
+            <RadioHeader {...loadedRadio} />
             <RadioSide {...loadedRadio} />
             <RadioEpg />
             <RadioComments />

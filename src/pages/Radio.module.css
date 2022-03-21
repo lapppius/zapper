@@ -20,7 +20,7 @@ section:not(:first-child) {
     .radioContent {
         grid-template-columns: 3.5fr 1fr;
         grid-template-areas:
-            'radio_main_area radio_main_area'
+            'radio_header_area radio_header_area'
             'radio_epg_area radio_side_area'
             'radio_comments_area radio_side_area';
     }
@@ -30,7 +30,7 @@ section:not(:first-child) {
     .radioContent {
         grid-template-columns: 1fr;
         grid-template-areas:
-            'radio_main_area '
+            'radio_header_area '
             'radio_epg_area '
             'radio_side_area'
             'radio_comments_area ';

@@ -1,4 +1,4 @@
-import styles from './RadioMain.module.css';
+import styles from './RadioHeader.module.css';
 import PlayPauseButton from '../PlayPauseButton';
 import ShareButton from '../ShareButton';
 import RadioImg from '../RadioImg';
@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { fetchWikiSummary } from '../../FetchFunctions';
 
-export default function RadioMain(props) {
+export default function RadioHeader(props) {
     const [imgPalette, setImgPalette] = useState(null);
     const [wikiSummary, setWikiSummary] = useState(null);
     const wikiSummaryRef = useRef(null);
@@ -18,7 +18,7 @@ export default function RadioMain(props) {
 
     return (
         <section
-            className={styles.radioMainContainer}
+            className={styles.radioHeaderContainer}
             style={{
                 background: `${
                     imgPalette != null
@@ -58,7 +58,7 @@ export default function RadioMain(props) {
                         id={props.id}
                         streamUrl={props.streamUrl}
                     />
-                    {/* <ShareButton {...props} /> */}
+                    <ShareButton {...props} />
                 </div>
                 <p className={styles.radioDescription} ref={wikiSummaryRef}>
                     {wikiSummary}
