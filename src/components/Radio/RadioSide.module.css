@@ -9,7 +9,6 @@
 .radioSideContainer li {
     list-style: none;
     display: flex;
-    align-items: center;
     flex-flow: row nowrap;
     gap: 5px;
     margin: 5px 0;
