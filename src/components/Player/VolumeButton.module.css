@@ -1,6 +1,5 @@
 #volumeControls {
     display: grid;
-    /* justify-content: flex-start;*/
     align-items: center;
     grid-template-columns: 1fr auto;
     direction: rtl;
@@ -90,8 +89,17 @@
     transition: all 0.2s ease-in-out;
 }
 
+@media (hover: hover) and (pointer: fine) {
+    #volume:hover svg > path {
+        fill: white;
+    }
+}
+
 @media only screen and (max-width: 499px) {
     #volumeSlider {
         visibility: hidden;
+    }
+    #volume:active svg > path {
+        fill: white;
     }
 }
