@@ -3,3 +3,8 @@
     background-color: transparent;
     border: none;
 }
+
+.shareGroup{
+    display: flex;
+    
+}

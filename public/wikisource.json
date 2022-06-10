@@ -10,6 +10,11 @@
         "epgID":52
     },
     {
+        "name": "Deutero Laika",
+        "wikiID": "Q112325770",
+        "epgID":null
+    },
+    {
         "name": "Trito Programma",
         "wikiID": "Q16915687",
         "epgID": 48
