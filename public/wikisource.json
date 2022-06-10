@@ -30,6 +30,11 @@
         "epgID": 50
     },
     {
+        "name": "Kosmos Jazz",
+        "wikiID": "Q112325691",
+        "epgID": null
+    },
+    {
         "name": "Zeppelin",
         "wikiID": "Q61354887",
         "epgID": null
