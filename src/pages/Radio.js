@@ -45,7 +45,7 @@ function getRadioInfoPromise(res) {
                         radio.email = expression;
                         break;
                     case 'P856':
-                        radio.website = expression;
+                        radio.website = expression.replace(/\/+$/, '');
                         break;
                     case 'P159':
                         let city = undefined;
