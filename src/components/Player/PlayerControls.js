@@ -6,9 +6,11 @@ import { useContext, useEffect, useState } from 'react';
 import { PlayerContext } from '../../App';
 import { Link } from 'react-router-dom';
 import * as Vibrant from 'node-vibrant';
+import { idToShort } from '../../FetchFunctions';
 
 export default function PlayerControls() {
     const [imgPalette, setImgPalette] = useState(null);
+    const [short, setShort] = useState(null);
     const playerContext = useContext(PlayerContext);
     const { playing, waiting, curId, curImg, color, curRef } =
         useContext(PlayerContext).playerState;
@@ -27,6 +29,9 @@ export default function PlayerControls() {
                 .then((palette) => {
                     setImgPalette(palette);
                 });
+            idToShort(curId).then((res) => {
+                setShort(res);
+            });
         }
     }, [curImg]);
 
@@ -40,7 +45,7 @@ export default function PlayerControls() {
     return (
         <div id={styles['controls']}>
             <div id={styles['artworkDuration']}>
-                <Link to={`${curId}`}>
+                <Link to={`${short}`}>
                     <div id={styles['playerImage']}>
                         {curImg ? (
                             <img

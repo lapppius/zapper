@@ -44,8 +44,7 @@ export default function RadiosListItem(props) {
                     }
                 >
                     <PlayPauseButton
-                    //set id as shortUrl so can be used later in links
-                        id={shortUrl}
+                        id={props.id}
                         streamUrl={props.streamUrl}
                         title={props.title}
                     />
