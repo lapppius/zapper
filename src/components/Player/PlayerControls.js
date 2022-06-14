@@ -45,20 +45,24 @@ export default function PlayerControls() {
     return (
         <div id={styles['controls']}>
             <div id={styles['artworkDuration']}>
-                <Link to={`${short}`}>
-                    <div id={styles['playerImage']}>
-                        {curImg ? (
-                            <img
-                                src={curImg}
-                                height="50px"
-                                width="50px"
-                                // onLoad={getVibrant}
-                            />
-                        ) : (
-                            ''
-                        )}
-                    </div>
-                </Link>
+                {short !== null ? (
+                    <Link to={`${short}`}>
+                        <div id={styles['playerImage']}>
+                            {curImg ? (
+                                <img
+                                    src={curImg}
+                                    height="50px"
+                                    width="50px"
+                                    // onLoad={getVibrant}
+                                />
+                            ) : (
+                                ''
+                            )}
+                        </div>
+                    </Link>
+                ) : (
+                    ''
+                )}
                 <CurrentTime />
             </div>
             <div id={styles['mainControls']}>
