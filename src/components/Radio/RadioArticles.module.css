@@ -1,0 +1,11 @@
+.articles {
+    padding: 1rem;
+}
+
+.articleItem {
+    background: var(--player-header-back);
+    border-radius: 1rem;
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}

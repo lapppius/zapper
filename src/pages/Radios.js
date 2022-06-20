@@ -12,16 +12,18 @@ export default function Radios() {
         if (radiosSession === null) {
             setIsLoading(true);
             getWikidataEntitiesPromise().then((response) => {
-                console.log(response)
+                console.log(response);
                 const radios = [];
                 for (const obj of Object.entries(response.entities)) {
-                    const radio = {
-                        id: obj[1].id,
-                        title: obj[1].sitelinks.elwiki.title,
-                        streamUrl:
-                            obj[1].claims.P963[0].mainsnak.datavalue.value,
-                    };
-                    radios.push(radio);
+                    try {
+                        const radio = {
+                            id: obj[1].id,
+                            title: obj[1].sitelinks.elwiki.title,
+                            streamUrl:
+                                obj[1].claims.P963[0].mainsnak.datavalue.value,
+                        };
+                        radios.push(radio);
+                    } catch (error) {}
                 }
                 setIsLoading(false);
                 setLoadedRadios(radios);

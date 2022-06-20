@@ -7,6 +7,7 @@ import RadioHeader from '../components/Radio/RadioHeader';
 import styles from './Radio.module.css';
 import { useState } from 'react';
 import { getWikidataEntityPromise, shortToId } from '../FetchFunctions';
+import RadioArticles from '../components/Radio/RadioArticles';
 
 function getRadioInfoPromise(res) {
     return new Promise((resolve, reject) => {
@@ -193,6 +194,7 @@ export const Radio = () => {
             <RadioSide {...loadedRadio} />
             <RadioEpg />
             <RadioComments />
+            {/* <RadioArticles/> */}
         </div>
     );
 };
