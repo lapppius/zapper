@@ -1,11 +1,43 @@
+.carouselContainer {
+    overflow-x: hidden;
+    padding: 1rem 0.5rem;
+    background: var(--player-header-back);
+}
 .articles {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     padding: 1rem;
+    margin: 0;
 }
 
 .articleItem {
-    background: var(--player-header-back);
+    display: flex;
+    flex: none;
     border-radius: 1rem;
+    border: 0.5px solid rgb(136, 136, 136);
     list-style: none;
-    margin: 0.5rem 0;
     padding: 0.5rem;
+    margin: 0 1rem 0 0;
+    scroll-snap-align: start;
+    gap: 1rem;
+    
+}
+
+.articleItem > h1 {
+    font-size: 1rem;
+    margin: unset;
+    width: fit-content;
+    height: fit-content;
+    text-align: start;
+    background-color: yellowgreen;
+
+}
+
+@media only screen and (max-width: 599px) {
+    .articleItem {
+        width: fit-content;
+    }
 }

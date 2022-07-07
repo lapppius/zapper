@@ -192,8 +192,8 @@ export const Radio = () => {
         <div className={styles.radioContent} ref={radioRef}>
             <RadioHeader {...loadedRadio} />
             <RadioSide {...loadedRadio} />
-            <RadioEpg />
-            <RadioComments />
+            {/* <RadioEpg /> */}
+            {/* <RadioComments /> */}
             {/* <RadioArticles/> */}
         </div>
     );

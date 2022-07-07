@@ -26,25 +26,28 @@ export default function RadioArticles() {
                 }
             });
         setArticles(articles);
+        console.log(articles);
     }, [articlesRef]);
 
     return (
-        <ul className={styles.articles} ref={articlesRef}>
-            {articles == null
-                ? 'No articles'
-                : articles.map((article) => (
-                      <li
-                      
-                          className={styles.articleItem}
-                          title={article.title}
-                          key={article.id}
-                      >
-                          {article.title}
-                          <span>
-                              {', ' + article.date + ' | ' + article.author}
-                          </span>
-                      </li>
-                  ))}
-        </ul>
+        <div className={styles.carouselContainer}>
+            <ul className={styles.articles} ref={articlesRef}>
+                {articles == null
+                    ? 'No articles'
+                    : articles.map((article) => (
+                          <li
+                              className={styles.articleItem}
+                              title={article.title}
+                              key={article.id}
+                          >
+                              <img
+                                  src="https://via.placeholder.com/120"
+                                  height="120px"
+                              />
+                              <h1>{article.title}</h1>
+                          </li>
+                      ))}
+            </ul>
+        </div>
     );
 }
