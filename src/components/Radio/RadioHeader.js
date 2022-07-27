@@ -42,8 +42,8 @@ export default function RadioHeader(props) {
                     title={props.title}
                     id={props.id}
                     url={undefined}
-                    height="150px"
-                    width="150px"
+                    height="180px"
+                    width="180px"
                     style="radioLogoContainer"
                     borderColor={
                         imgPalette != null
