@@ -16,12 +16,18 @@ export default function Radios() {
                 const radios = [];
                 for (const obj of Object.entries(response.entities)) {
                     try {
-                        const radio = {
-                            id: obj[1].id,
-                            title: obj[1].sitelinks.elwiki.title,
-                            streamUrl:
-                                obj[1].claims.P963[0].mainsnak.datavalue.value,
-                        };
+                        const radio = {};
+                        radio.id = obj[1].id;
+                        try {
+                            radio.title = obj[1].sitelinks.elwiki.title;
+                        } catch (error) {
+                            radio.title = obj[1].labels.el.value;
+                        }
+
+                        radio.streamUrl =
+                            obj[1].claims.P963[0].mainsnak.datavalue.value;
+
+                        console.log(radio.title);
                         radios.push(radio);
                     } catch (error) {}
                 }
