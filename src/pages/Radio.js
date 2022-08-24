@@ -159,8 +159,15 @@ function getRadioInfoPromise(res) {
                 }
             } catch (error) {}
         }
-        radio.title = res.sitelinks.elwiki.title;
+        try {
+            radio.title = res.sitelinks.elwiki.title;
+        } catch (error) {
+            radio.title = res.labels.el.value;
+        }
         radio.id = res.id;
+        try {
+            radio.description = res.descriptions.el.value;
+        } catch (error) {}
         resolve(radio);
     });
 }

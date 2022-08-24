@@ -8,14 +8,33 @@ import { fetchWikiSummary } from '../../FetchFunctions';
 
 export default function RadioHeader(props) {
     const [imgPalette, setImgPalette] = useState(null);
-    const [wikiSummary, setWikiSummary] = useState(null);
+    const [wikiSummary, setWikiSummary] = useState({
+        wikiSum: { sumContent: null, isWiki: null },
+    });
     const wikiSummaryRef = useRef(null);
     useEffect(() => {
         fetchWikiSummary(props.title).then((res) => {
-            setWikiSummary(res.extract);
+            {
+                res.extract == undefined
+                    ? setWikiSummary((prevState) => ({
+                          ...prevState,
+                          wikiSum: {
+                              ...prevState.wikiSum,
+                              sumContent: props.description,
+                              isWiki: false,
+                          },
+                      }))
+                    : setWikiSummary((prevState) => ({
+                          ...prevState,
+                          wikiSum: {
+                              ...prevState.wikiSum,
+                              sumContent: res.extract,
+                              isWiki: true,
+                          },
+                      }));
+            }
         });
     }, [wikiSummaryRef, props.title]);
-
     return (
         <section
             className={styles.radioHeaderContainer}
@@ -61,8 +80,8 @@ export default function RadioHeader(props) {
                     <ShareButton {...props} />
                 </div>
                 <p className={styles.radioDescription} ref={wikiSummaryRef}>
-                    {wikiSummary}
-                    {wikiSummary ? (
+                    {wikiSummary.wikiSum.sumContent}
+                    {wikiSummary.wikiSum.isWiki==undefined?'':wikiSummary.wikiSum.isWiki ? (
                         <span>
                             <a
                                 target="_blank"
@@ -75,7 +94,17 @@ export default function RadioHeader(props) {
                             </a>
                         </span>
                     ) : (
-                        <span>Loading wiki summary</span>
+                        <span>
+                            <a
+                                target="_blank"
+                                title={`Λήμμα της Βικιπαίδειας για ${props.title}`}
+                                href={`https://wikidata.org/wiki/${encodeURI(
+                                    props.id
+                                )}`}
+                            >
+                                Wikidata
+                            </a>
+                        </span>
                     )}
                 </p>
             </header>

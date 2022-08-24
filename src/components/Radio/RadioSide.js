@@ -8,11 +8,15 @@ export default function RadioSide(props) {
     useEffect(() => {
         // if (Object.keys(props).length != 0) console.log(props);
     }, [props]);
+    // console.log(Object.keys(props).length == 0);
     return (
-        <aside className={styles.radioSideContainer}>
-            <SocialMedia {...props} />
-            <Contact {...props} />
-            <Frequencies {...props} />
-        </aside>
+        <>
+            {Object.keys(props).length==0 ? undefined :
+            <aside className={styles.radioSideContainer}>
+                <SocialMedia {...props} />
+                <Contact {...props} />
+                <Frequencies {...props} />
+            </aside>}
+        </>
     );
 }
