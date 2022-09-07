@@ -92,7 +92,6 @@ export default function NowPlaying() {
     const [transform, setTransform] = useState(0);
 
     const nowPlayingEl = useRef();
-    const nowWord = useRef(null);
 
     useEffect(() => {
         if (playing && waiting === false && curId) {
@@ -110,7 +109,6 @@ export default function NowPlaying() {
     return (
         <>
             <h1 id={styles['nowPlaying']}>
-                <span ref={nowWord}>Τώρα:</span>
                 <div id={styles['nowPlayingTitleContainer']}>
                     <div id={styles['nowPlayingTitle']}>
                         <span
