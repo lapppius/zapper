@@ -71,7 +71,7 @@ function setMediaSession(
             title: radioName,
             artist: NowPlaying,
             album: radioName,
-            artwork: [{ src: imgSrc, sizes: '192x192', type: 'image/svg' }],
+            artwork: [{ src: imgSrc, sizes: '192x192', type: 'image/png' }],
         });
     }
 }
