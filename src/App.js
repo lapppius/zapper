@@ -21,6 +21,7 @@ const initialState = {
     nextId: undefined,
     color: undefined,
     curName: undefined,
+    nowPlaying: undefined,
     // curRef: undefined,
     curImg: undefined,
     streamUrl: undefined,
@@ -46,6 +47,8 @@ const reducer = (state, action) => {
             return { ...state, playing: undefined };
         case 'SET_NAME':
             return { ...state, curName: action.payload };
+        case 'SET_NOW_PLAYING':
+            return { ...state, nowPlaying: action.payload };
         case 'SET_COLOR':
             return { ...state, color: action.payload };
         case 'SET_CUR_ID':

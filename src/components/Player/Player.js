@@ -1,9 +1,9 @@
-import styles from './Player.module.css';
-import NowPlaying from './NowPlaying';
-import PlayerControls from './PlayerControls';
 import { useContext, useEffect, useRef } from 'react';
 import { PlayerContext } from '../../App';
 import { getWikidataEntityPromise } from '../../FetchFunctions';
+import NowPlaying from './NowPlaying';
+import styles from './Player.module.css';
+import PlayerControls from './PlayerControls';
 
 // let audioContext = null;
 let playPromise = undefined;
@@ -61,6 +61,17 @@ function setCurrentPlaying(id, audio, source, audioContext) {
     }
 }
 
+function setMediaSession(radioName, imgSrc, NowPlaying) {
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new window.MediaMetadata({
+            title: radioName,
+            artist: NowPlaying,
+            album: radioName,
+            artwork: [{ src: imgSrc }],
+        });
+    }
+}
+
 export default function Player() {
     const audioElement = useRef(null);
     const playerContext = useContext(PlayerContext);
@@ -72,8 +83,12 @@ export default function Player() {
         gainNode,
         curId,
         curRef,
+        curName,
+        nowPlaying,
+        curImg,
         radiosList,
     } = playerContext.playerState;
+
     useEffect(() => {
         initializeAudio(audioElement.current, audioContext, gainNode);
     }, [audioElement]);
@@ -88,6 +103,16 @@ export default function Player() {
             );
         }
     }, [streamUrl]);
+
+    useEffect(() => {
+        if (
+            curName !== undefined &&
+            curImg !== null &&
+            nowPlaying !== undefined
+        ) {
+            setMediaSession(curName, curImg, nowPlaying);
+        }
+    }, [curImg, curName, nowPlaying]);
 
     useEffect(() => {
         if (playing === true && streamUrl !== undefined) {
@@ -130,12 +155,9 @@ export default function Player() {
             style={{
                 background: `${
                     color != null
-                        ? `rgba(${color.Vibrant.getRgb().join(
-                              ','
-                          )},0.15)`
+                        ? `rgba(${color.Vibrant.getRgb().join(',')},0.15)`
                         : 'transparent'
                 }`,
-
             }}
         >
             <NowPlaying />

@@ -25,7 +25,6 @@ export default function PlayPauseButton(props) {
             type: 'SET_NAME',
             payload: props.title,
         });
-
         // playerContext.playerDispatch({
         //     type: 'SET_CUR_REF',
         //     payload: liRef.current,

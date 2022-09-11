@@ -102,6 +102,15 @@ export default function NowPlaying() {
     }, [playing, waiting, curId]);
 
     useEffect(() => {
+        if (nowPlayingTitle != undefined) {
+            playerContext.playerDispatch({
+                type: 'SET_NOW_PLAYING',
+                payload: nowPlayingTitle,
+            });
+        }
+    }, [nowPlayingTitle]);
+
+    useEffect(() => {
         if (waiting === true || playing === false) {
             setNowPlayingTitle(undefined);
         }

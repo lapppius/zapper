@@ -76,6 +76,7 @@ export default function RadioHeader(props) {
                         style="radioPlayButton"
                         id={props.id}
                         streamUrl={props.streamUrl}
+                        title={props.title}
                     />
                     <ShareButton {...props} />
                 </div>
