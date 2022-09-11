@@ -147,7 +147,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<Radios />} />
                         <Route path="/radios" element={<Radios />} />
-                        <Route path="/:short" element={<Radio />} />
+                        <Route path="/radio/:short" element={<Radio />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/epg" element={<Epg />} />
                         <Route path="*" element={<NotFound />} />

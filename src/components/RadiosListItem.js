@@ -51,7 +51,7 @@ export default function RadiosListItem(props) {
                 </span>
             </div>
 
-            <Link to={`/${shortUrl != null ? shortUrl : ''}`}>
+            <Link to={`/radio/${shortUrl != null ? shortUrl : ''}`}>
                 <p className={styles}>{props.title}</p>
             </Link>
             {playing && !waiting && time !== null && curId === props.id ? (

@@ -101,7 +101,7 @@ export function fetchWikiSummary(title) {
     });
 }
 
-export const shortToId = (short) => {
+export function shortToId(short) {
     return new Promise((resolve, reject) => {
         fetch('wikisource.json', { cache: 'force-cache' })
             .then((res) => {
@@ -110,14 +110,15 @@ export const shortToId = (short) => {
             .then((res) => {
                 for (const item of res) {
                     if (item.name === short.replaceAll('_', ' ')) {
+                        console.log(item);
                         resolve(item.wikiID);
                     }
                 }
             });
     });
-};
+}
 
-export const idToShort = (id) => {
+export function idToShort(id) {
     return new Promise((resolve, reject) => {
         fetch('wikisource.json', { cache: 'force-cache' })
             .then((res) => {
@@ -131,4 +132,4 @@ export const idToShort = (id) => {
                 }
             });
     });
-};
+}
