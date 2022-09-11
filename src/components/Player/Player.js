@@ -112,7 +112,7 @@ export default function Player() {
         if (curName !== undefined && curImg !== null) {
             setMediaSession(curName, curImg, nowPlaying);
         }
-    }, [playerContext]);
+    }, [curName, curImg, nowPlaying]);
 
     useEffect(() => {
         if (playing === true && streamUrl !== undefined) {

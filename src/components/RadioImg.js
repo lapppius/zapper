@@ -50,13 +50,13 @@ function setImagesListPromise(title) {
 }
 
 export default function RadioImg(props) {
-    const [loadedImgUrl, setImgUrl] = useState(null);
+    const [loadedImgUrl, setImgUrl] = useState(undefined);
     const playerContext = useContext(PlayerContext);
     const { curId, curImg } = playerContext.playerState;
     const radiosSession = sessionStorage.getItem('radiosListSes');
 
     useEffect(() => {
-        if (radiosSession == null) {
+        if (radiosSession == undefined) {
             setImagesListPromise(props.title).then((res) => {
                 setImgUrl(res);
                 let previous = JSON.parse(
@@ -92,7 +92,7 @@ export default function RadioImg(props) {
     }, [curId, loadedImgUrl,curImg,playerContext,props.id]);
 
     useEffect(() => {
-        if (loadedImgUrl !== null) {
+        if (loadedImgUrl !== undefined) {
             Vibrant.from(loadedImgUrl)
                 .getPalette()
                 .then((palette) => {
