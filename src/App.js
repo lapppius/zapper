@@ -44,7 +44,7 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'SET_EMPTIED':
             console.log('emptied');
-            return { ...state, playing: undefined };
+            return { ...state, playing: undefined, nowPlaying: undefined };
         case 'SET_NAME':
             return { ...state, curName: action.payload };
         case 'SET_NOW_PLAYING':
@@ -72,7 +72,12 @@ const reducer = (state, action) => {
             return { ...state, waiting: true };
         case 'SET_PAUSE':
             console.log('paused');
-            return { ...state, playing: false, time: null };
+            return {
+                ...state,
+                playing: false,
+                time: null,
+                nowPlaying: undefined,
+            };
         case 'TIMEUPDATE':
             return { ...state, time: action.payload };
         case 'SET_CUR_IMG':
