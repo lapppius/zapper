@@ -1,11 +1,11 @@
-import styles from './RadiosListItem.module.css';
 import { useContext, useEffect, useRef, useState } from 'react';
-import PlayPauseButton from './PlayPauseButton';
-import { PlayerContext } from '../App';
 import { Link } from 'react-router-dom';
-import RadioImg from './RadioImg';
-import PlayingBars from './Animations/EqualizerIcon';
+import { PlayerContext } from '../App';
 import { idToShort } from '../FetchFunctions';
+import PlayingBars from './Animations/EqualizerIcon';
+import PlayPauseButton from './PlayPauseButton';
+import RadioImg from './RadioImg';
+import styles from './RadiosListItem.module.css';
 
 export default function RadiosListItem(props) {
     const playerContext = useContext(PlayerContext);
@@ -18,7 +18,6 @@ export default function RadiosListItem(props) {
             setShortUrl(res);
         });
     }, [props.id]);
-
     return (
         <li
             tabIndex="0"

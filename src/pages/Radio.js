@@ -173,8 +173,8 @@ function getRadioInfoPromise(res) {
 }
 
 export const Radio = () => {
+   
     const { short } = useParams();
-    console.log(short)
     const [loadedRadio, setLoadedRadio] = useState({});
     const radioRef = useRef(null);
     // const radiosListSes = JSON.parse(sessionStorage.getItem('radiosListSes'));

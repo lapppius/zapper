@@ -110,7 +110,6 @@ export function shortToId(short) {
             .then((res) => {
                 for (const item of res) {
                     if (item.name === short.replaceAll('_', ' ')) {
-                        console.log(item);
                         resolve(item.wikiID);
                     }
                 }
