@@ -29,10 +29,11 @@ export default function PlayerControls() {
                 .then((palette) => {
                     setImgPalette(palette);
                 });
+                }
             idToShort(curId).then((res) => {
                 setShort(res);
             });
-        }
+        
     }, [curImg]);
 
     useEffect(() => {
