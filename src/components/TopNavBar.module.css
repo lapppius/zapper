@@ -1,50 +1,68 @@
 .header {
-    background: var(--player-header-back);
-    border-bottom: 0.1px solid var(--dark-cyan-back);
-    grid-area: header;
-    width: 100%;
-    height: 50px;
-    z-index: 1;
-    position: fixed;
-    backdrop-filter: blur(3px);
+  background: var(--player-header-back);
+  border-bottom: 0.1px solid var(--dark-cyan-back);
+  grid-area: header;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  position: fixed;
+  backdrop-filter: blur(3px);
+  display: flex;
 }
 
 .header > nav {
-    height: 100%;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .header ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .header li {
-    display: flex;
-    height: 70%;
+  display: flex;
 }
 
 .header li a:hover {
-    background-color: var(--dark-cyan-back);
+  background-color: var(--dark-cyan-back);
 }
 .header li a {
-    display: flex;
-    align-items: center;
-    color: cyan;
-    font-size: 1.1rem;
-    text-decoration: none;
-    padding: 0 1rem;
-    border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: cyan;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
 }
 
 .active {
-    background-color: var(--dark-cyan-back);
+  outline: 1px solid var(--light-cyan-border);
 }
+
+.LoginSignUpButtons li {
+  padding: 0 0.7rem;
+}
+
+.LoginSignUpButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginButton {
+  background-color: blueviolet;
+}
+nav {
+  margin: 0 1rem;
+}
+
 /*
  @media only screen and (min-width: 500px) {
     .header {

@@ -1,6 +1,6 @@
 const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
 const LANG = 'el';
-const MAX_CACHE_AGE = 900;
+const MAX_CACHE_AGE = 0;
 const idsTest = JSON.parse(sessionStorage.getItem('idsTest'));
 
 // Get the wikidata IDs for every radio station in an array of object
@@ -103,7 +103,7 @@ export function fetchWikiSummary(title) {
 
 export function shortToId(short) {
     return new Promise((resolve, reject) => {
-        fetch('wikisource.json', { cache: 'force-cache' })
+        fetch('wikisource.json', { cache: 'no-store' })
             .then((res) => {
                 return res.json();
             })
@@ -119,7 +119,7 @@ export function shortToId(short) {
 
 export function idToShort(id) {
     return new Promise((resolve, reject) => {
-        fetch('wikisource.json', { cache: 'force-cache' })
+        fetch('wikisource.json', { cache: 'no-store' })
             .then((res) => {
                 return res.json();
             })
