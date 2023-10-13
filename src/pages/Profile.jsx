@@ -56,7 +56,7 @@ const Profile = () => {
 
   function deletePhoto() {
     deleteP(authContext.currentUser.photoURL, authContext.currentUser);
-    console.log(authContext.currentUser)
+    console.log(authContext.currentUser);
   }
 
   useEffect(() => {
@@ -72,7 +72,6 @@ const Profile = () => {
     }
   }, [authContext.currentUser.photoURL]);
 
-
   return (
     <>
       <nav>
@@ -81,7 +80,7 @@ const Profile = () => {
         <div>
           <Avatar
             loading="lazy"
-            alt={user.email+"'s profile photo"}
+            alt={user.email + "'s profile photo"}
             src={userPhotoURL}
             sx={{ width: 100, height: 100 }}
           />
@@ -96,13 +95,6 @@ const Profile = () => {
             ""
           )}
 
-          {authContext.currentUser ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link to="/Login">
-              <button>Login</button>
-            </Link>
-          )}
         </div>
       </nav>
     </>
