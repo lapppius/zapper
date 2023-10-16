@@ -1,86 +1,85 @@
 .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
+  font-family: "Material Icons", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
 }
 /* --------------------------------Font Declaration end---------------------------------------- */
 :root {
-    --dark-cyan-back: rgba(0, 139, 139, 0.376);
-    --light-cyan-border: rgb(0, 219, 219);
-    --player-header-back: rgba(33, 33, 33, 0.829);
-    --body-back: #18191a;
-    --radio-list-item: #242828;
-    --blue-link: #8bb5f8;
-    --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=);
-
+  --dark-cyan-back: rgba(0, 139, 139, 0.376);
+  --light-cyan-border: rgb(0, 219, 219);
+  --player-header-back: rgba(33, 33, 33, 0.829);
+  --body-back: #18191a;
+  --radio-list-item: #242828;
+  --blue-link: #8bb5f8;
+  --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=);
 }
 
 html {
-    height: 100vh;
-    font-family: 'Didact Gothic', sans-serif;
+  height: 100vh;
+  font-family: Roboto, sans-serif;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--body-back);
+  margin: 0;
+  padding: 0;
+  background-color: var(--body-back);
 }
 
 #root {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        'header'
-        'main'
-        'player_box';
-    color: rgb(241, 241, 241);
-    /* height: 100vh; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "player_box";
+  color: rgb(241, 241, 241);
+  /* height: 100vh; */
 }
 
 main {
-    grid-area: main;
-    scroll-behavior: smooth;
-    padding: 50px 0 70px 0;
+  grid-area: main;
+  scroll-behavior: smooth;
+  padding: 50px 0 70px 0;
 }
 
 abbr {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Media Rules */
 @media only screen and (min-device-width: 500px) and (min-width: 500px) {
-    /* scroll bar */
-    ::-webkit-scrollbar {
-        width: 0.5rem;
-    }
+  /* scroll bar */
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #313131;
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #313131;
+  }
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 1rem;
-    }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+  }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 /* @media only screen and (max-width: 499px) {
