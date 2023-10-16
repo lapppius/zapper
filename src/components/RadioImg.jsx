@@ -107,15 +107,15 @@ export default function RadioImg(props) {
     }
   }, [curId, loadedImgUrl, curImg, playerContext, props.id]);
 
-  // useEffect(() => {
-  //   if (loadedImgUrl !== undefined) {
-  //     Vibrant.from(loadedImgUrl)
-  //       .getPalette()
-  //       .then((palette) => {
-  //         if (props.setImgPalette) props.setImgPalette(palette);
-  //       });
-  //   }
-  // }, [loadedImgUrl]);
+  useEffect(() => {
+    if (loadedImgUrl !== undefined) {
+      Vibrant.from(loadedImgUrl)
+        .getPalette()
+        .then((palette) => {
+          if (props.setImgPalette) props.setImgPalette(palette);
+        });
+    }
+  }, [loadedImgUrl]);
   return (
     <span
       className={`${styles[props.style]}`}
