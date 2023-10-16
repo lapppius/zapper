@@ -4,7 +4,7 @@ import { PlayerContext } from "../App";
 import * as Vibrant from "node-vibrant";
 
 const EL_WIKIPEDIA_API = "https://el.wikipedia.org/w/api.php";
-const MAX_CACHE_AGE = 86400;
+const MAX_CACHE_AGE = 82400;
 
 function setImagesListPromise(title) {
   return new Promise((resolve, reject) => {
@@ -12,13 +12,7 @@ function setImagesListPromise(title) {
       try {
         fetch(
           "https://el.wikipedia.org/api/rest_v1/page/media-list/" +
-            encodeURI(title),
-          {
-            method: "GET",
-            headers: {
-              "Cache-Control": "max-age=" + MAX_CACHE_AGE,
-            },
-          }
+            encodeURI(title)
         )
           .then((response) => {
             return response.json();
@@ -79,7 +73,7 @@ export default function RadioImg(props) {
     setImagesListPromise(props.title).then((res) => {
       setImgUrl(res);
     });
-  }, [props]);
+  }, [props.id]);
 
   // useEffect(() => {
   // if (radiosSession == undefined) {
@@ -113,15 +107,15 @@ export default function RadioImg(props) {
     }
   }, [curId, loadedImgUrl, curImg, playerContext, props.id]);
 
-  useEffect(() => {
-    if (loadedImgUrl !== undefined) {
-      Vibrant.from(loadedImgUrl)
-        .getPalette()
-        .then((palette) => {
-          if (props.setImgPalette) props.setImgPalette(palette);
-        });
-    }
-  }, [loadedImgUrl]);
+  // useEffect(() => {
+  //   if (loadedImgUrl !== undefined) {
+  //     Vibrant.from(loadedImgUrl)
+  //       .getPalette()
+  //       .then((palette) => {
+  //         if (props.setImgPalette) props.setImgPalette(palette);
+  //       });
+  //   }
+  // }, [loadedImgUrl]);
   return (
     <span
       className={`${styles[props.style]}`}
