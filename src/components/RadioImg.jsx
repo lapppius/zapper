@@ -111,7 +111,7 @@ export default function RadioImg(props) {
           width={props.width}
           alt={"Λογότυπο - " + props.title}
           src={loadedImgUrl}
-          
+          loading="lazy"
         />
       ) : (
         ""
