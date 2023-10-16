@@ -82,7 +82,7 @@ export default function RadioImg(props) {
         payload: loadedImgUrl,
       });
     }
-  }, [playerContext]);
+  }, [curId, loadedImgUrl, curImg, playerContext, props.id]);
 
   useEffect(() => {
     if (loadedImgUrl !== undefined) {
