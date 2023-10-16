@@ -12,7 +12,14 @@ function setImagesListPromise(title) {
       try {
         fetch(
           "https://el.wikipedia.org/api/rest_v1/page/media-list/" +
-            encodeURI(title)
+            encodeURI(title),
+          {
+            method: "GET",
+            headers: {
+              "Cache-Control": "default",
+              "Cache-Control": "max-age=" + MAX_CACHE_AGE,
+            },
+          }
         )
           .then((response) => {
             return response.json();
@@ -71,7 +78,7 @@ export default function RadioImg(props) {
   const radiosSession = sessionStorage.getItem("radiosListSes");
   useEffect(() => {
     setImagesListPromise(props.title).then((res) => {
-      console.log(setImgUrl(res));
+      setImgUrl(res);
     });
   }, [props]);
 
