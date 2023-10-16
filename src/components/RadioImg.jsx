@@ -73,7 +73,9 @@ export default function RadioImg(props) {
     setImagesListPromise(props.title).then((res) => {
       setImgUrl(res);
     });
-  }, [props.id]);
+  }, [props.title]);
+
+
 
   // useEffect(() => {
   // if (radiosSession == undefined) {
@@ -116,6 +118,7 @@ export default function RadioImg(props) {
         });
     }
   }, [loadedImgUrl]);
+  
   return (
     <span
       className={`${styles[props.style]}`}
