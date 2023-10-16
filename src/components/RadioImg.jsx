@@ -68,37 +68,12 @@ export default function RadioImg(props) {
   const [loadedImgUrl, setImgUrl] = useState(undefined);
   const playerContext = useContext(PlayerContext);
   const { curId, curImg } = playerContext.playerState;
-  const radiosSession = sessionStorage.getItem("radiosListSes");
+
   useEffect(() => {
     setImagesListPromise(props.title).then((res) => {
       setImgUrl(res);
     });
   }, [props.title]);
-
-
-
-  // useEffect(() => {
-  // if (radiosSession == undefined) {
-  //   setImagesListPromise(props.title).then((res) => {
-  //     setImgUrl(res);
-  //     let previous = JSON.parse(sessionStorage.getItem("radiosListSes"));
-  //     if (previous != null) {
-  //       previous.forEach((element) => {
-  //         if (element.id == props.id) {
-  //           element["imgUrl"] = res;
-  //           sessionStorage.setItem("radiosListSes", JSON.stringify(previous));
-  //         }
-  //       });
-  //     }
-  //   });
-  // } else {
-  // JSON.parse(radiosSession).forEach((element) => {
-  //   if (element.id === props.id) {
-  // setImgUrl(element.imgUrl);
-  //   }
-  // });
-  // }
-  // }, [props.id, , props.title]);
 
   useEffect(() => {
     if (props.id === curId && curImg !== loadedImgUrl) {
@@ -107,7 +82,7 @@ export default function RadioImg(props) {
         payload: loadedImgUrl,
       });
     }
-  }, [curId, loadedImgUrl, curImg, playerContext, props.id]);
+  }, [playerContext]);
 
   useEffect(() => {
     if (loadedImgUrl !== undefined) {
@@ -118,7 +93,7 @@ export default function RadioImg(props) {
         });
     }
   }, [loadedImgUrl]);
-  
+
   return (
     <span
       className={`${styles[props.style]}`}
