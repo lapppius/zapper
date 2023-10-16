@@ -4,7 +4,7 @@ import { PlayerContext } from "../App";
 import * as Vibrant from "node-vibrant";
 
 const EL_WIKIPEDIA_API = "https://el.wikipedia.org/w/api.php";
-const MAX_CACHE_AGE = 3600;
+const MAX_CACHE_AGE = 86400;
 
 function setImagesListPromise(title) {
   return new Promise((resolve, reject) => {
