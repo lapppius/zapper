@@ -16,7 +16,7 @@ function setImagesListPromise(title) {
           {
             method: "GET",
             headers: {
-              "Cache-Control": "default",
+              "Cache-Control": "force-cache",
               "Cache-Control": "max-age=" + MAX_CACHE_AGE,
             },
           }
