@@ -119,8 +119,7 @@ function setMediaSession(
       artwork: [
         {
           src: imgSrc,
-          sizes: "192x192",
-          type: "image/png+xml",
+          sizes: "192x192"
         },
       ],
     });
