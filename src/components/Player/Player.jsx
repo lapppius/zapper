@@ -119,32 +119,8 @@ function setMediaSession(
       artwork: [
         {
           src: imgSrc,
-          sizes: "96x96",
-          type: "image/svg+xml",
-        },        {
-          src: imgSrc,
-          sizes: "128x128",
-          type: "image/svg+xml",
-        },
-        {
-          src: imgSrc,
-          sizes: "192x192",
-          type: "image/svg+xml",
-        },
-        {
-          src: imgSrc,
-          sizes: "256x256",
-          type: "image/svg+xml",
-        },
-        {
-          src: imgSrc,
-          sizes: "384x384",
-          type: "image/svg+xml",
-        },
-        {
-          src: imgSrc,
-          sizes: "512x512",
-          type: "image/svg+xml",
+          sizes: "128x128 256x256 512x512 ",
+          type: "image/png",
         },
       ],
     });

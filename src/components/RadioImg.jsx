@@ -46,13 +46,13 @@ function setImagesListPromise(title) {
                     res.query.pages[p].imageinfo &&
                     res.query.pages[p].imageinfo[0]
                   ) {
-                    if (
-                      res.query.pages[p].imageinfo[0].mime == "image/svg+xml"
-                    ) {
-                      return res.query.pages[p].imageinfo[0].url;
-                    } else {
+                    // if (
+                    //   res.query.pages[p].imageinfo[0].mime == "image/svg+xml"
+                    // ) {
+                    //   return res.query.pages[p].imageinfo[0].url;
+                    // } else {
                       return res.query.pages[p].imageinfo[0].thumburl;
-                    }
+                    // }
                   } else {
                     // Handle the case where one of the properties or elements is undefined
                     return undefined; // or some other default value or error handling logic
