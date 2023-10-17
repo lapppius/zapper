@@ -46,7 +46,7 @@ function setImagesListPromise(title) {
                     res.query.pages[p].imageinfo &&
                     res.query.pages[p].imageinfo[0]
                   ) {
-                    return res.query.pages[p].imageinfo[0].thumburl;
+                    return res.query.pages[p].imageinfo[0].url;
                   } else {
                     // Handle the case where one of the properties or elements is undefined
                     return undefined; // or some other default value or error handling logic
@@ -107,11 +107,12 @@ export default function RadioImg(props) {
     >
       {loadedImgUrl ? (
         <img
+          loading="lazy"
+          fetchpriority="low"
           height={props.height}
           width={props.width}
           alt={"Λογότυπο - " + props.title}
           src={loadedImgUrl}
-          loading="lazy"
         />
       ) : (
         ""
