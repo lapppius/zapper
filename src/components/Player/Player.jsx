@@ -52,8 +52,12 @@ function setCurrentPlaying(id, audio, source, audioContext) {
           console.log("This is an M3U8 playlist URL.");
           console.log("maybe it's m3u8");
           // Create an audio buffer source node.
-          const audioBufferSource = audioContext.createBufferSource();
-      
+          const audioBufferSource = audioContext.createBufferSource(
+            2,
+            audioContext.sampleRate * 3.0,
+            audioContext.sampleRate
+          );
+
           // Load the audio data from the audio source.
           fetch(audio.src)
             .then((response) => response.arrayBuffer())
@@ -78,7 +82,6 @@ function setCurrentPlaying(id, audio, source, audioContext) {
     }
     prevPlayingID = id;
   } catch (error) {
-   
     console.log(error);
   }
 }
@@ -113,7 +116,13 @@ function setMediaSession(
       title: radioName,
       artist: NowPlaying,
       album: radioName,
-      artwork: [{ src: imgSrc, sizes: "192x192", type: "image/png" }],
+      artwork: [
+        {
+          src: imgSrc,
+          sizes: "192x192",
+          type: "image/png+svg+xml",
+        },
+      ],
     });
   }
 }
