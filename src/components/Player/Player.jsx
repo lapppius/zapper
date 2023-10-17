@@ -112,7 +112,7 @@ function setMediaSession(
   NowPlaying = undefined
 ) {
   if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new window.MediaMetadata({
+    navigator.mediaSession.metadata = new MediaMetadata({
       title: radioName,
       artist: NowPlaying,
       album: radioName,
@@ -120,7 +120,7 @@ function setMediaSession(
         {
           src: imgSrc,
           sizes: "192x192",
-          type: "image/png+xml",
+          type: "image/svg+xml",
         },
       ],
     });
