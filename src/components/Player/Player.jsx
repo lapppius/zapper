@@ -120,7 +120,7 @@ function setMediaSession(
         {
           src: imgSrc,
           sizes: "192x192",
-          type: "image/svg+xml",
+          type: "image/svg+png+xml",
         },
       ],
     });
