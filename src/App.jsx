@@ -27,7 +27,6 @@ const initialState = {
   color: undefined,
   curName: undefined,
   nowPlaying: undefined,
-  // curRef: undefined,
   curImg: undefined,
   streamUrl: undefined,
   prevStreamUrl: undefined,

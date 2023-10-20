@@ -54,7 +54,6 @@ export default function PlayerControls() {
                                     src={curImg}
                                     height="50px"
                                     width="50px"
-                                    // onLoad={getVibrant}
                                 />
                             ) : (
                                 ''

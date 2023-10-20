@@ -1,17 +1,18 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { PlayerContext } from '../App';
-import { idToShort } from '../FetchFunctions';
-import PlayingBars from './Animations/EqualizerIcon';
-import PlayPauseButton from './PlayPauseButton';
-import RadioImg from './RadioImg';
-import styles from './RadiosListItem.module.css';
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { PlayerContext } from "../App";
+import { idToShort, setImagesListPromise } from "../FetchFunctions";
+import PlayingBars from "./Animations/EqualizerIcon";
+import PlayPauseButton from "./PlayPauseButton";
+import RadioImg from "./RadioImg";
+import styles from "./RadiosListItem.module.css";
 
 export default function RadiosListItem(props) {
-    const playerContext = useContext(PlayerContext);
-    const { playing, waiting, curId, time } = playerContext.playerState;
-    const liRef = useRef(null);
-    const [shortUrl, setShortUrl] = useState(null);
+  const playerContext = useContext(PlayerContext);
+  const { playing, waiting, curId, time, curImg } = playerContext.playerState;
+  const liRef = useRef(null);
+  const [shortUrl, setShortUrl] = useState(null);
+  const [loadedImgUrl, setImgUrl] = useState(undefined);
 
   useEffect(() => {
     idToShort(props.id).then((res) => {
@@ -68,14 +69,14 @@ export default function RadiosListItem(props) {
         </span>
       </div>
 
-            <Link to={`/${shortUrl != null ? shortUrl : ''}`}>
-                <p className={styles}>{props.title}</p>
-            </Link>
-            {playing && !waiting && time !== null && curId === props.id ? (
-                <span className={styles.equalizerWrapper}>
-                    <PlayingBars />
-                </span>
-            ) : null}
-        </li>
-    );
+      <Link to={`/${shortUrl != null ? shortUrl : ""}`}>
+        <p className={styles}>{props.title}</p>
+      </Link>
+      {playing && !waiting && time !== null && curId === props.id ? (
+        <span className={styles.equalizerWrapper}>
+          <PlayingBars />
+        </span>
+      ) : null}
+    </li>
+  );
 }
