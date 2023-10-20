@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import { useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, updateCurrentUser, updateProfile } from "firebase/auth";
 import {

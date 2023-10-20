@@ -1,0 +1,152 @@
+[
+    {
+        "name":"Proto Programma",
+        "wikiID": "Q16918908",
+        "epgID":47
+    },
+    {
+        "name": "Deutero Programma",
+        "wikiID": "Q17488311",
+        "epgID":52
+    },
+    {
+        "name": "Deutero Laika",
+        "wikiID": "Q113551553",
+        "epgID":null
+    },
+    {
+        "name": "Trito Programma",
+        "wikiID": "Q16915687",
+        "epgID": 48
+    },
+    {
+        "name": "ERA Sport",
+        "wikiID": "Q12876656",
+        "epgID": 53
+    },
+    {
+        "name": "Kosmos",
+        "wikiID": "Q17488380",
+        "epgID": 50
+    },
+    {
+        "name": "Kosmos Jazz",
+        "wikiID": "Q113551400",
+        "epgID": null
+    },
+    {
+        "name": "Zeppelin",
+        "wikiID": "Q61354887",
+        "epgID": null
+    },
+    {
+        "name": "Voice of Greece",
+        "wikiID": "Q1062944",
+        "epgID": 54
+    },
+    {
+        "name": "958fm",
+        "wikiID": "Q17488314",
+        "epgID": 55
+    },
+    {
+        "name": "102fm",
+        "wikiID": "Q12871770",
+        "epgID": 51
+    },
+    {
+        "name": "ERT Volos",
+        "wikiID": "Q19775480",
+        "epgID": 34
+    },
+    {
+        "name": "ERT Voreiou Aigaiou",
+        "wikiID": "Q18002959",
+        "epgID": null
+    },
+    {
+        "name": "ERT Notiou Aigaiou",
+        "wikiID": "Q17488368",
+        "epgID": 41
+    },
+    {
+        "name": "ERT Zakynthou",
+        "wikiID": "Q22812121",
+        "epgID": 37
+    },
+    {
+        "name": "ERT Heraklion",
+        "wikiID": "Q18328021",
+        "epgID": 43
+    },
+    {
+        "name": "ERT Ioannina",
+        "wikiID": "Q17488354",
+        "epgID": 31
+    },
+    {
+        "name": "ERT Kavala",
+        "wikiID": "Q22812123",
+        "epgID": 27
+    },
+    {
+        "name": "ERT Kalamata",
+        "wikiID": "Q17488358",
+        "epgID": 40
+    },
+    {
+        "name": "ERT Kerkyra",
+        "wikiID": "Q17488360",
+        "epgID": null
+    },
+    {
+        "name": "ERT Kozani",
+        "wikiID": "Q20667831",
+        "epgID": 30
+    },
+    {
+        "name": "ERT Komotinis",
+        "wikiID": "Q22812114",
+        "epgID": 26
+    },
+    {
+        "name": "ERT Larissa",
+        "wikiID": "Q20202090",
+        "epgID": 33
+    },
+    {
+        "name": "ERT Orestiada",
+        "wikiID": "Q20741569",
+        "epgID": 25
+    },
+    {
+        "name": "ERT Patras",
+        "wikiID": "Q17488362",
+        "epgID": 36
+    },
+    {
+        "name": "ERT Pyrgos",
+        "wikiID": "Q17488364",
+        "epgID": 38
+    },
+    {
+        "name": "ERT Serres",
+        "wikiID": "Q17488370",
+        "epgID": 28
+    },
+    {
+        "name": "ERT Tripoli",
+        "wikiID": "Q12876657",
+        "epgID": null
+    },
+    {
+        "name": "ERT Florina",
+        "wikiID": "Q17488375",
+        "epgID": 29
+    },
+    {
+        "name": "ERT Hania",
+        "wikiID": "Q17488378",
+        "epgID": 42
+    }
+]
