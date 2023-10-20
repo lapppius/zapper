@@ -58,6 +58,7 @@ export default function RadioHeader(props) {
             }));
       }
     });
+    });
   }, [wikiSummaryRef, props.title]);
   return (
     <section
