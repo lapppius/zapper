@@ -1,40 +1,40 @@
 .radioSideContainer {
-    grid-area: radio_side_area;
+  grid-area: radio_side_area;
 }
 
 .radioSideContainer * {
-    font-style: normal;
+  font-style: normal;
 }
 
 .radioSideContainer li {
-    list-style: none;
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 5px;
-    margin: 5px 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5px;
+  margin: 5px 0;
 }
 
 .radioSideContainer ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: flex-start;
-    width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .radioSideContainer a {
-    text-decoration: none;
-    color: var(--blue-link);
+  text-decoration: none;
+  color: var(--blue-link);
 }
 
 .radioSideContainer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .radioSideContainer span {
-    display: flex;
+  display: flex;
 }
 
 .radioSideContainer span svg {
-    fill: #898f9c;
+  fill: #898f9c;
 }
