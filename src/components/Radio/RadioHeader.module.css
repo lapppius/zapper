@@ -29,6 +29,7 @@
             'radio_logo_area radio_header_text_area '
             'radio_logo_area radio_description'
             'radio_logo_area radio_button_area';
+        align-items: center;
     }
     .headerButtons {
         display: flex;
