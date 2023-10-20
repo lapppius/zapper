@@ -39,7 +39,6 @@ export default function RadiosListItem(props) {
         payload: loadedImgUrl,
       });
     }
-    console.log(loadedImgUrl);
   }, [curId, loadedImgUrl, curImg, props.id]);
   return (
     <li
