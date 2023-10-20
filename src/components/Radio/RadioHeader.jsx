@@ -22,6 +22,7 @@ export default function RadioHeader(props) {
   const wikiSummaryRef = useRef(null);
 
   useEffect(() => {
+    console.log(loadedImgUrl);
     if (props.id === curId && curImg !== loadedImgUrl) {
       playerContext.playerDispatch({
         type: "SET_CUR_IMG",
