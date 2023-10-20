@@ -6,8 +6,6 @@ import * as Vibrant from "node-vibrant";
 import { useEffect, useRef, useState, useContext } from "react";
 import { fetchWikiSummary, setImagesListPromise } from "../../FetchFunctions";
 import { PlayerContext } from "../../App";
-import { Typography, Skeleton } from "@mui/material";
-import React from "react";
 
 export default function RadioHeader(props) {
   const [imgPalette, setImgPalette] = useState(null);
@@ -57,7 +55,7 @@ export default function RadioHeader(props) {
               },
             }));
       }
-    });
+    })
   }, [wikiSummaryRef, props.title]);
   return (
     <section
@@ -87,21 +85,7 @@ export default function RadioHeader(props) {
     >
       <header>
         <div className={styles.headerText}>
-          <h1>
-            {!props.title ? (
-              <Skeleton
-                sx={{
-                  bgcolor: "grey.900",
-                  variant: "rounded",
-                  height: "2rem",
-                  width: "13rem",
-                  animation: "wave",
-                }}
-              />
-            ) : (
-              props.title
-            )}
-          </h1>
+          <h1>{props.title}</h1>
         </div>
 
         <RadioImg
@@ -129,30 +113,7 @@ export default function RadioHeader(props) {
           <ShareButton {...props} />
         </div>
         <p className={styles.radioDescription} ref={wikiSummaryRef}>
-          {wikiSummary.wikiSum.sumContent ? (
-            wikiSummary.wikiSum.sumContent
-          ) : (
-            <React.Fragment>
-              <Skeleton
-                sx={{
-                  bgcolor: "grey.900",
-                  variant: "rounded",
-                  height: "1.5rem",
-                  width: "22rem",
-                  animation: "wave",
-                }}
-              />
-              <Skeleton
-                sx={{
-                  bgcolor: "grey.900",
-                  variant: "rounded",
-                  height: "1.5rem",
-                  width: "13rem",
-                  animation: "wave",
-                }}
-              />
-            </React.Fragment>
-          )}
+          {wikiSummary.wikiSum.sumContent}
           {wikiSummary.wikiSum.isWiki == undefined ? (
             ""
           ) : wikiSummary.wikiSum.isWiki ? (
