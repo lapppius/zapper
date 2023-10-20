@@ -1,10 +1,104 @@
 import styles from "./RadioImg.module.css";
 import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../App";
-import { Skeleton } from "@mui/material";
+import * as Vibrant from "node-vibrant";
+
+const EL_WIKIPEDIA_API = "https://el.wikipedia.org/w/api.php";
+const MAX_CACHE_AGE = 82400;
+
+function setImagesListPromise(title) {
+  return new Promise((resolve, reject) => {
+    if (title) {
+      try {
+        fetch(
+          "https://el.wikipedia.org/api/rest_v1/page/media-list/" +
+            encodeURI(title)
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((elwiki_media) => {
+            let wikifileName = undefined;
+            if (elwiki_media.items && elwiki_media.items.length > 0) {
+              wikifileName = elwiki_media.items[0].title.replace(
+                /Αρχείο:/g,
+                ""
+              );
+            }
+            fetch(
+              EL_WIKIPEDIA_API +
+                "?origin=*&action=query&format=json&smaxage=" +
+                MAX_CACHE_AGE +
+                "&maxage=" +
+                MAX_CACHE_AGE +
+                "&titles=File:" +
+                encodeURI(wikifileName) +
+                "&prop=imageinfo&iiprop=url|mime&iiurlwidth=120"
+            )
+              .then((response) => response.json())
+              .then((res) => {
+                for (let p in res.query.pages) {
+                  if (
+                    res &&
+                    res.query &&
+                    res.query.pages &&
+                    res.query.pages[p] &&
+                    res.query.pages[p].imageinfo &&
+                    res.query.pages[p].imageinfo[0]
+                  ) {
+                    // if (
+                    //   res.query.pages[p].imageinfo[0].mime == "image/svg+xml"
+                    // ) {
+                    //   return res.query.pages[p].imageinfo[0].url;
+                    // } else {
+                      return res.query.pages[p].imageinfo[0].thumburl;
+                    // }
+                  } else {
+                    // Handle the case where one of the properties or elements is undefined
+                    return undefined; // or some other default value or error handling logic
+                  }
+                }
+              })
+              .then((url) => {
+                resolve(url);
+              });
+          });
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+  });
+}
 
 export default function RadioImg(props) {
+  const [loadedImgUrl, setImgUrl] = useState(undefined);
   const playerContext = useContext(PlayerContext);
+  const { curId, curImg } = playerContext.playerState;
+
+  useEffect(() => {
+    setImagesListPromise(props.title).then((res) => {
+      setImgUrl(res);
+    });
+  }, [props.title]);
+
+  useEffect(() => {
+    if (props.id === curId && curImg !== loadedImgUrl) {
+      playerContext.playerDispatch({
+        type: "SET_CUR_IMG",
+        payload: loadedImgUrl,
+      });
+    }
+  }, [curId, loadedImgUrl, curImg, playerContext, props.id]);
+
+  // useEffect(() => {
+  //   if (loadedImgUrl !== undefined) {
+  //     Vibrant.from(loadedImgUrl)
+  //       .getPalette()
+  //       .then((palette) => {
+  //         if (props.setImgPalette) props.setImgPalette(palette);
+  //       });
+  //   }
+  // }, [loadedImgUrl]);
 
   return (
     <span
@@ -17,46 +111,18 @@ export default function RadioImg(props) {
         // }`,
       }}
     >
-      {props.src === undefined ? (
-        <Skeleton
-          variant="rounded"
-          animation="wave"
-          height={props.height}
-          width={props.width}
-          sx={{ bgcolor: "grey.800" }}
-        />
-      ) : (
+      {loadedImgUrl ? (
         <img
           loading="lazy"
           fetchpriority="low"
           height={props.height}
           width={props.width}
-          alt={props.title ? "Λογότυπο - " + props.title : ""}
-          src={props.src}
+          alt={"Λογότυπο - " + props.title}
+          src={loadedImgUrl}
         />
-      )}
-      {/* {props.src === undefined ? (
-        <Skeleton
-          variant="rounded"
-          animation="wave"
-          height={props.height}
-          width={props.width}
-          sx={{ bgcolor: "grey.800" }}
-        />
-      ) : props.src !== null ? (
-        <img
-          loading="lazy"
-          fetchpriority="low"
-          height={props.height}
-          width={props.width}
-          alt={props.title ? "Λογότυπο - " + props.title : ""}
-          src={props.src}
-        />
-      ) : props.src === null ? (
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOJgAADiYBou8l/AAAAYlQTFRFAAAATk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTbFUJwAAAIN0Uk5TAOn/9CEY1vvmyZBIEWj4/qcrIu7kiiACXPzlnxdP4l5qfgevkdyLQl3gJ0H5oAbL9yV4mRv649/VyrLThEBFPIZgZrsJH7iTCN7AWOvxCr+qqTgS/TPv0gOAqy8FDC6s2uHwugF/cD8UvBojvh1XdRCIVtelTilpS0Mq7Chit3EOdH1EpSKOAAACbUlEQVR4nO3Y91vTQByA8XggbR1EEIjV4sCBdYDWal2oCEoRcSAqIC7cuBdOXH+5UJKSS9Im0RJyz/N+fuTuvpf3KS081TQAAAAAAAAAAAAAAAAAAAAAAAAAwP9ZIfzU1ZtbVzZ4b0gkU6tWr7EPXdvoO3WOvq4WAQEuajK3Nq+v8jAtrW2LQ40N6SAFG2MUMCexKbM4tj3Ia5CMV4AQm7eUxxpbVQwQYltHefB2JQPSOwxrcGan7+6YvQdKErvKr0Gn7+YYvgJCNO62JhspJQNEdo81eu8+JQP0/dborm4lA8SBg9bsnM/OOL6J5x2yZucPV994ZAkCCkddjuVDBmStA9rx0oCkvFzXYA4+cXIJAnqqbHUGnGqb13z6jOMTX++Vz52Vl/v6a/HctQiwfrW0c+flhQHVArTioLRwQbkAbUi3LwyqF5C5aF8YVi/gUsG+oBvSuUgDLl+xuzoSMOCa9FE5Kl8RaYBDa8CA69KfrBvKBRh90sJN1QLGxqUPITGhSMCtyZLbd+7Kzy9yigRk75Xcd/7bPzUiXxHbgEoejCkeMOS4QrWA1EO1A4bbnVcsZ8Cj8AEDhvOKSAMe99g9eRo2QH827boi0oAw/8x56X7uPqdSwIuXHufUCRidyHidUyag8Mr1/lUpoOX1mwrnIg142+vyrugXkJ56/+HjZMUrIg3woM9UCPj0ecGXmXxXtSuWO6DiV4tNVQcTQAABBBBAAAEBOL6T8qB/NbfWf5MXvge8YlY+9qPD/0gIP8f95H6ZW4uz0s9/B32Q6T/SuU7ntxYAAAAAAAAAAAAAAAAAAAAAAAAAgH/1F9k7nWhOWsIVAAAAAElFTkSuQmCC" />
       ) : (
         ""
-      )} */}
+      )}
     </span>
   );
 }
