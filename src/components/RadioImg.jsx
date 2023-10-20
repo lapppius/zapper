@@ -10,11 +10,11 @@ export default function RadioImg(props) {
     <span
       className={`${styles[props.style]}`}
       style={{
-        // border: `4px solid ${
-        //   props.style == "radioLogoContainer" && props.borderColor
-        //     ? `rgba(${props.borderColor},0.7)`
-        //     : "0"
-        // }`,
+        border: `4px solid ${
+          props.style == "radioLogoContainer" && props.borderColor
+            ? `rgba(${props.borderColor},0.7)`
+            : "0"
+        }`,
       }}
     >
       {props.src === undefined ? (

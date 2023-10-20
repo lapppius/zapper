@@ -82,16 +82,16 @@ export default function RadioHeader(props) {
     <section
       className={styles.radioHeaderContainer}
       style={{
-        // background: `${
-        //   imgPalette != null
-        //     ? `linear-gradient(185deg, rgba(${imgPalette.LightVibrant.getRgb().join(
-        //         ","
-        //       )},1) 0%,rgba(${imgPalette.Vibrant.getRgb().join(",")},1) 50%
-        //                   ,rgba(${imgPalette.DarkVibrant.getRgb().join(
-        //                     ","
-        //                   )},1) 100%)`
-        //     : `linear-gradient(250deg, #6e6e6e, #171717)`
-        // } `,
+        background: `${
+          imgPalette != null
+            ? `linear-gradient(185deg, rgba(${imgPalette.LightVibrant.getRgb().join(
+                ","
+              )},1) 0%,rgba(${imgPalette.Vibrant.getRgb().join(",")},1) 50%
+                          ,rgba(${imgPalette.DarkVibrant.getRgb().join(
+                            ","
+                          )},1) 100%)`
+            : `linear-gradient(250deg, #6e6e6e, #171717)`
+        } `,
       }}
     >
       <header>
