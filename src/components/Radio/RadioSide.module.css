@@ -26,6 +26,7 @@
 .radioSideContainer a {
   text-decoration: none;
   color: var(--blue-link);
+  overflow-x: hidden;
 }
 
 .radioSideContainer a:hover {

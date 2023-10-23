@@ -57,17 +57,18 @@ function setCurrentPlaying(id, audio, source, audioContext) {
             audioContext.sampleRate * 3.0,
             audioContext.sampleRate
           );
-
-          // Load the audio data from the audio source.
-          fetch(audio.src)
-            .then((response) => response.arrayBuffer())
-            .then((data) => audioContext.decodeAudioData(data))
-            .then((buffer) => {
-              audioBufferSource.buffer = buffer;
-              audioBufferSource.connect(audioContext.destination);
-              audioBufferSource.start();
-            })
-            .catch((error) => console.error(error));
+          try {
+            // Load the audio data from the audio source.
+            fetch(audio.src)
+              .then((response) => response.arrayBuffer())
+              .then((data) => audioContext.decodeAudioData(data))
+              .then((buffer) => {
+                audioBufferSource.buffer = buffer;
+                audioBufferSource.connect(audioContext.destination);
+                audioBufferSource.start();
+              })
+              .catch((error) => console.error(error));
+          } catch (error) {}
         } else {
           console.log("This is not an M3U8 playlist URL.");
         }
@@ -78,7 +79,10 @@ function setCurrentPlaying(id, audio, source, audioContext) {
     audio.load();
     playPromise = audio.play();
     if (playPromise !== undefined) {
-      playPromise.then((res) => {}).catch((error) => {});
+      playPromise
+        .then((res) => {})
+        .catch((error) => {
+        });
     }
     prevPlayingID = id;
   } catch (error) {

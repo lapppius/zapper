@@ -81,6 +81,7 @@ const reducer = (state, action) => {
         playing: false,
         time: null,
         nowPlaying: undefined,
+        waiting: false,
       };
     case "TIMEUPDATE":
       return { ...state, time: action.payload };

@@ -13,13 +13,83 @@ export default function RadioHeader(props) {
   const playerContext = useContext(PlayerContext);
   const { curId, curImg } = playerContext.playerState;
 
+  const RO = new ResizeObserver((entries) => {
+    {
+      entries
+        ? entries.forEach((entry) => {
+            // console.log(entry);
+            {
+              entry
+                ? setElmentsSize((prevState) => {
+                    const existingElementIndex = prevState.elements.findIndex(
+                      (element) => element.element === entry.target
+                    );
+
+                    if (existingElementIndex !== -1) {
+                      return {
+                        elements: prevState.elements.map((element, index) => {
+                          if (index === existingElementIndex) {
+                            return {
+                              ...element,
+                              height: entry.contentRect.height,
+                              width: entry.contentRect.width,
+                              scrollHeight: entry.target.scrollHeight,
+                              scrollWidth: entry.target.scrollWidth,
+                            };
+                          }
+                          return element;
+                        }),
+                      };
+                    } else {
+                      return {
+                        elements: [
+                          ...prevState.elements,
+                          {
+                            element: entry.target,
+                            height: entry.contentRect.height,
+                            width: entry.contentRect.width,
+                            scrollHeight: entry.target.scrollHeight,
+                            scrollWidth: entry.target.scrollWidth,
+                          },
+                        ],
+                      };
+                    }
+                  })
+                : undefined;
+            }
+          })
+        : undefined;
+    }
+  });
+
   const [imgPalette, setImgPalette] = useState(null);
   const [loadedImgUrl, setImgUrl] = useState(undefined);
+  const [overflown, setOverflown] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [initialDescriptionValue, setInitialDescriptionValue] =
+    useState(undefined);
 
   const [wikiSummary, setWikiSummary] = useState({
     wikiSum: { sumContent: null, isWiki: null },
   });
+  const [elementsSize, setElmentsSize] = useState({
+    elements: [],
+  });
   const wikiSummaryRef = useRef(null);
+  const descriptionContainerRef = useRef(null);
+
+  function setShow(e) {
+    !showMore && overflown
+      ? (descriptionContainerRef.current.classList.add(`${styles.expandDesc}`),
+        (descriptionContainerRef.current.style = `height:${elementsSize.elements[1].height}px`),
+        setShowMore(true))
+      : (descriptionContainerRef.current.classList.remove(
+          `${styles.expandDesc}`
+        ),
+        (descriptionContainerRef.current.style = `height:${elementsSize.elements[1].height}px`),
+        setShowMore(false));
+    console.log("setShow function called");
+  }
 
   useEffect(() => {
     if (props.id === curId && curImg !== loadedImgUrl) {
@@ -65,6 +135,97 @@ export default function RadioHeader(props) {
   }, [wikiSummaryRef, props.title]);
 
   useEffect(() => {
+    if (wikiSummaryRef.current && descriptionContainerRef.current) {
+      // const RO = new ResizeObserver((entries) => {
+      //   {
+      //     entries
+      //       ? entries.forEach((entry) => {
+      //           // console.log(entry);
+      //           {
+      //             entry
+      //               ? setElmentsSize((prevState) => {
+      //                   const existingElementIndex =
+      //                     prevState.elements.findIndex(
+      //                       (element) => element.element === entry.target
+      //                     );
+
+      //                   if (existingElementIndex !== -1) {
+      //                     return {
+      //                       elements: prevState.elements.map(
+      //                         (element, index) => {
+      //                           if (index === existingElementIndex) {
+      //                             return {
+      //                               ...element,
+      //                               height: entry.contentRect.height,
+      //                               width: entry.contentRect.width,
+      //                               scrollHeight: entry.target.scrollHeight,
+      //                               scrollWidth: entry.target.scrollWidth,
+      //                             };
+      //                           }
+      //                           return element;
+      //                         }
+      //                       ),
+      //                     };
+      //                   } else {
+      //                     return {
+      //                       elements: [
+      //                         ...prevState.elements,
+      //                         {
+      //                           element: entry.target,
+      //                           height: entry.contentRect.height,
+      //                           width: entry.contentRect.width,
+      //                           scrollHeight: entry.target.scrollHeight,
+      //                           scrollWidth: entry.target.scrollWidth,
+      //                         },
+      //                       ],
+      //                     };
+      //                   }
+      //                 })
+      //               : undefined;
+      //           }
+      //         })
+      //       : undefined;
+      //   }
+      // });
+      RO.observe(descriptionContainerRef.current);
+      RO.observe(wikiSummaryRef.current);
+    }
+    return () => {
+      RO.disconnect();
+    };
+  }, [wikiSummary, wikiSummaryRef.current, descriptionContainerRef.current]);
+
+  useEffect(() => {
+    elementsSize.elements[0]?.height && initialDescriptionValue === undefined
+      ? setInitialDescriptionValue(elementsSize.elements[0].height)
+      : undefined;
+  }, [elementsSize]);
+
+  useEffect(() => {
+    initialDescriptionValue &&
+    elementsSize &&
+    elementsSize.elements[1]?.height &&
+    initialDescriptionValue < elementsSize.elements[1].scrollHeight
+      ? setOverflown(true)
+      : initialDescriptionValue &&
+        elementsSize &&
+        elementsSize.elements[1]?.height &&
+        initialDescriptionValue >= elementsSize.elements[1].scrollHeight
+      ? setOverflown(false)
+      : undefined;
+  }, [elementsSize, showMore, overflown]);
+
+  // useEffect(() => {
+  //   if (
+  //     elementsSize &&
+  //     elementsSize.elements &&
+  //     elementsSize.elements[1]?.height
+  //   ) {
+  //     descriptionContainerRef.current.style = `height:${elementsSize.elements[1].height}px`;
+  //   }
+  // }, [elementsSize, overflown, showMore]);
+
+  useEffect(() => {
     if (props.title) {
       setImagesListPromise(props.title)
         .then((res) => {
@@ -102,7 +263,6 @@ export default function RadioHeader(props) {
                 sx={{
                   bgcolor: "grey.900",
                   variant: "rounded",
-                  height: "2rem",
                   width: "13rem",
                   animation: "wave",
                 }}
@@ -135,9 +295,11 @@ export default function RadioHeader(props) {
           />
           <ShareButton {...props} />
         </div>
-        <p className={styles.radioDescription} ref={wikiSummaryRef}>
+        <div className={styles.radioDescription} ref={descriptionContainerRef}>
           {wikiSummary.wikiSum.sumContent ? (
-            wikiSummary.wikiSum.sumContent
+            <p className={styles.wikiSummary} ref={wikiSummaryRef}>
+              {wikiSummary.wikiSum.sumContent}
+            </p>
           ) : (
             <React.Fragment>
               <Skeleton
@@ -160,30 +322,33 @@ export default function RadioHeader(props) {
               />
             </React.Fragment>
           )}
-          {wikiSummary.wikiSum.isWiki == undefined ? (
+          {/* {wikiSummary.wikiSum.isWiki == undefined ? (
             ""
-          ) : wikiSummary.wikiSum.isWiki ? (
-            <span>
+            ) : wikiSummary.wikiSum.isWiki ? (
               <a
-                target="_blank"
-                title={`Λήμμα της Βικιπαίδειας για ${props.title}`}
-                href={`https://el.wikipedia.org/wiki/${encodeURI(props.title)}`}
+              className={styles.wikiLink}
+              target="_blank"
+              title={`Λήμμα της Βικιπαίδειας για ${props.title}`}
+              href={`https://el.wikipedia.org/wiki/${encodeURI(props.title)}`}
               >
-                Βικιπαίδεια
+              Βικιπαίδεια
               </a>
-            </span>
-          ) : (
-            <span>
-              <a
+              ) : (
+                <a
+                className={styles.wikiLink}
                 target="_blank"
                 title={`Λήμμα της Βικιπαίδειας για ${props.title}`}
                 href={`https://wikidata.org/wiki/${encodeURI(props.id)}`}
-              >
+                >
                 Wikidata
-              </a>
-            </span>
-          )}
-        </p>
+                </a>
+              )} */}
+          <div className={styles.showMore}>
+            {overflown ? (
+              <div onClick={setShow}>Show {!showMore ? "More" : "Less"}</div>
+            ) : undefined}
+          </div>
+        </div>
       </header>
     </section>
   );
