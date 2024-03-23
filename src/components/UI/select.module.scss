@@ -1,0 +1,16 @@
+.select {
+	-webkit-appearance: none;
+	appearance: none;
+	outline: none;
+	background-color: v.$secondary-dark;
+	padding: 0.5rem;
+
+	&:focus {
+		outline: 1px solid v.$cyan-dark;
+		border-radius: v.$radius;
+	}
+
+	option {
+		background-color: v.$dark;
+	}
+}

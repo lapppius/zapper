@@ -1,0 +1,25 @@
+.header {
+	display: flex;
+	background-color: v.$secondary-dark;
+	border-bottom: 1px;
+	border-color: v.$cyan-dark;
+	width: 100%;
+	max-height: 50px;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		max-width: v.$wide-width;
+
+		ul {
+			display: flex;
+			gap: 0.5rem;
+		}
+	}
+}

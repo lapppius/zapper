@@ -1,0 +1,25 @@
+.radiosListLoadMore {
+  background: transparent;
+}
+
+@media only screen and (min-width: 500px) {
+  .radiosListLoadMore {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 499px) {
+  .radiosListLoadMore {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style: none;
+    padding: 0 0 0.6rem 0;
+    margin: 0;
+  }
+}

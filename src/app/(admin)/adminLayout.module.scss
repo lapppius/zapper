@@ -1,0 +1,26 @@
+.adminLayout {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	flex: auto;
+	padding: 0.4rem;
+	grid-gap: 0.5rem 0;
+	position: relative;
+	overflow: hidden;
+
+	& > * {
+		background-color: v.$secondary-dark;
+		border-radius: v.$radius;
+		padding: 0.5rem;
+	}
+
+	@media only screen and (min-width: v.$md-screen-width) {
+		grid-template-columns: 250px 1fr;
+		grid-template-rows: auto 1fr;
+		grid-gap: 0 0.5rem;
+	}
+}
+
+.adminMain {
+	height: fit-content;
+}

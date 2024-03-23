@@ -1,0 +1,30 @@
+.input {
+	width: 300px;
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	input {
+		-webkit-appearance: none;
+		appearance: none;
+		outline: none;
+		background-color: transparent;
+		border: 1px solid v.$cyan-light;
+		border-radius: v.$radius;
+		padding: 0.5rem;
+		width: 100%;
+		// position: relative;
+
+		&:focus + label {
+			top: 0;
+		}
+
+		&:focus {
+		}
+	}
+
+	label {
+		position: absolute;
+		transform: translateY(-50%);
+	}
+}
