@@ -1,6 +1,6 @@
 import NavLink from "../UI/NavLink";
 import MobileMenu from "../UI/MobileMenu";
-import styles from "./AdminNav.module.scss";
+import styles from "./adminNav.module.scss";
 
 export default function AdminNav({ pathname }) {
   const options = [

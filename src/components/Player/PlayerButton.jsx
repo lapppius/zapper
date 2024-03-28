@@ -1,4 +1,4 @@
-import styles from "./playerButton.module.css";
+import styles from "./playerButton.module.scss";
 
 export default function PlayerButton({ id, title, ariaLabel, onClick, icon }) {
   return (
