@@ -1,0 +1,13 @@
+.search {
+  max-width: 100%;
+  flex: auto;
+  z-index: -1;
+
+  & > div {
+    width: 100%;
+  }
+
+  input {
+    min-width: 80px;
+  }
+}

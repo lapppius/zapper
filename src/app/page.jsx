@@ -1,3 +1,14 @@
-export default function Home() {
-	return <p>This is the Homepage :)</p>;
+import RadiosList from "@/components/UI/RadiosList";
+import { getRadios } from "@/app/lib/postgres/radios";
+
+export default async function Home() {
+	const radiosList = await getRadios();
+	return (
+		<>
+			{/* <RadiosList radios={radiosList.radios} /> */}
+
+			<RadiosList radios={radiosList} />
+			{/* <PaginationControls radios={JSON.parse(JSON.stringify(radiosList))} /> */}
+		</>
+	);
 }

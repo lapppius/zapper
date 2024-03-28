@@ -1,0 +1,117 @@
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-area: controls;
+  align-items: center;
+  justify-items: end;
+  width: 100%;
+  column-gap: 0.5rem;
+  padding: 0.5rem;
+  button {
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    margin: 0 0.4rem;
+    padding: 0;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    transition: all 0.1s ease-in-out;
+  }
+
+  svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+.mainControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 1;
+}
+
+.controls span.material-icons:hover {
+  cursor: pointer;
+}
+
+.sideControls {
+  grid-area: side_controls;
+  grid-column: 5 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.artworkDuration {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "player_image cur_time";
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-items: start;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.artwork {
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  grid-area: player_image;
+  height: 45px;
+  width: 45px;
+  position: relative;
+  padding: 0.2rem 0;
+  border-radius: 5rem;
+
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+  -webkit-filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+
+  img {
+    flex: none;
+    height: auto;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+}
+
+/* Media Rules */
+@media (hover: hover) and (pointer: fine) {
+  .controls button:hover {
+    box-sizing: border-box;
+    border-radius: 100%;
+    background-color: #75757530;
+  }
+
+  .controls button:active {
+    background-color: #505050;
+    transition: 0.08s box-shadow ease-in-out;
+    transition: 0.2s background-color ease-in-out;
+    box-shadow: 0 0 2px 1px #868686;
+    transform: scale(0.9);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .controls svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+  }
+}

@@ -1,19 +1,19 @@
 "use client";
-import PlayingBars from "../Animations/EqualizerIcon";
-
-import { usePlayer } from "@/contexts/PlayerContext";
-import styles from "./RadiosListItemPlayingAnimation.module.css";
+import PlayingBars from "./Animations/EqualizerIcon";
+import styles from "./RadiosListItemPlayingAnimation.module.scss";
+import { useAtom } from "jotai";
+import { playerAtom } from "../Player/PlayerAtom";
 
 export default function RadiosListItemPlayingAnimation({ id }) {
-	const playerContext = usePlayer();
-	const { playing, waiting, curId } = playerContext.playerState;
-	return (
-		<>
-			{playing && !waiting && curId === id ? (
-				<span className={styles.equalizerWrapper}>
-					<PlayingBars />
-				</span>
-			) : null}
-		</>
-	);
+  const { playing, waiting, curId } = useAtom(playerAtom)[0];
+
+  return (
+    <>
+      {playing && !waiting && curId === id ? (
+        <span className={styles.equalizerWrapper}>
+          <PlayingBars />
+        </span>
+      ) : null}
+    </>
+  );
 }

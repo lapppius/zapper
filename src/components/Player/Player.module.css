@@ -1,7 +1,0 @@
-.player {
-	grid-template-areas:
-		"now_playing"
-		"now_playing_description"
-		"controls";
-	grid-area: player_box;
-}

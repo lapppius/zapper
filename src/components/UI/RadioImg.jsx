@@ -1,4 +1,4 @@
-import styles from "./RadioImg.module.css";
+import styles from "./RadioImg.module.scss";
 import Image from "next/image";
 
 export default function RadioImg(props) {

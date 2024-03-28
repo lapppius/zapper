@@ -1,19 +1,21 @@
-import AdminRadiosSearchBar from "@/components/Admin/AdminRadiosSearchBar";
+import SearchBar from "@/components/Admin/SearchBar";
 import AdminRadiosList from "@/components/Admin/AdminRadiosList";
 import AdminCreateNewRadio from "@/components/Admin/AdminCreateNewRadio";
+import AdminHeader from "@/components/Admin/AdminHeader";
 import { getRadios } from "@/app/lib/postgres/radios";
 
-export default async function AdminRadios({ searchParams }) {
-	const cursor = Number(searchParams.cursor) ?? "";
-	console.log(cursor);
-	const adminRadiosList = await getRadios(cursor);
 
-	return (
-		<>
-			<p>Admin Radios console</p>
-			<AdminCreateNewRadio />
-			<AdminRadiosSearchBar />
-			<AdminRadiosList adminRadios={adminRadiosList} cursor={cursor} />
-		</>
-	);
+export default async function AdminRadios({ searchParams }) {
+  const cursor = Number(searchParams.cursor) ?? "";
+  const adminRadiosList = await getRadios(cursor);
+
+  return (
+    <>
+      <AdminHeader>
+        <AdminCreateNewRadio />
+        <SearchBar placeholder={"Search for radios"} />
+      </AdminHeader>
+      <AdminRadiosList adminRadios={adminRadiosList} cursor={cursor} />
+    </>
+  );
 }

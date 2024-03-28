@@ -1,17 +1,18 @@
 .adminNav {
-	top: 0;
-	position: sticky;
-	box-sizing: border-box;
-	height: fit-content;
+  top: 0;
+  position: sticky;
+  box-sizing: border-box;
+  height: fit-content;
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
 
-	@media only screen and (min-width: v.$md-screen-width) {
-		nav > select {
-			display: none;
-		}
-	}
-	@media only screen and (max-width: v.$md-screen-width) {
-		nav > ul {
-			display: none;
-		}
-	}
+  @media only screen and (min-width: v.$md-screen-width) {
+    nav > select {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: v.$md-screen-width) {
+    nav > ul {
+      display: none;
+    }
+  }
 }

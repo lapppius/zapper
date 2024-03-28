@@ -9,7 +9,6 @@ export default async function AdminUsers() {
 
 	return (
 		<>
-			<h1>Admin Users Panel</h1>
 			<AdminUsersList users={users} />
 		</>
 	);

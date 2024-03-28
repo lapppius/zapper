@@ -3,7 +3,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Button from "../UI/Button";
 
-export default function LoginButton({ provider, callbackUrl }) {
+export default function LoginButton({ provider }) {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const signInWith = async () => {

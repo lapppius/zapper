@@ -1,0 +1,1 @@
+ALTER TABLE "radios" ALTER COLUMN "stream" SET DATA TYPE varchar(255);

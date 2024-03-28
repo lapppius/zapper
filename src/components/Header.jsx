@@ -3,7 +3,7 @@ import Image from "next/image";
 import NavLink from "./UI/NavLink";
 import Menu from "./UI/Menu";
 
-import styles from "./styles/header.module.scss";
+import styles from "./header.module.scss";
 
 export default async function Header() {
 	const session = await auth();
@@ -13,7 +13,7 @@ export default async function Header() {
 			<header className={styles.header}>
 				<nav>
 					<ul>
-						<NavLink title="Radios" href="/radios" />
+						<NavLink title="Home" href="/" />
 						<NavLink title="Genres" href="/genres" />
 						<NavLink title="Countries" href="/countries" />
 						<NavLink title="About" href="/about" />

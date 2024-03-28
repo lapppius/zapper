@@ -1,0 +1,50 @@
+.radiosListItem {
+  height: auto;
+  width: auto;
+  border-radius: v.$radius;
+  padding: 0.8rem;
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 0.5rem;
+
+  &:hover {
+    background-color: v.$secondary-dark;
+    cursor: pointer;
+
+    button {
+      opacity: 100;
+      // transform: translateY(-5px);
+    }
+  }
+}
+
+.imageButtonContainer {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+  border-radius: v.$radius;
+  display: flex;
+  align-items: center;
+  background-color: v.$dark;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0.35rem;
+  }
+}
+
+.active {
+  opacity: 100% !important;
+}
+.selected {
+  background-color: var(--dark-cyan-back) !important;
+}

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 
@@ -37,7 +37,7 @@ export default function UploadRadioLogo() {
 				<input
 					type="text"
 					placeholder="Image URL"
-					onChange={(e) => setURLfile(e.target.value)}
+					// onChange={(e) => setURLfile(e.target.value)}
 					className={`rounded-md bg-slate-800 `}
 				/>
 				<button>

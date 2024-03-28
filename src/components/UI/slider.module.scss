@@ -1,0 +1,44 @@
+.slider {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+
+  /***** Track Styles *****/
+  /***** Chrome, Safari, Opera, and Edge Chromium *****/
+  &::-webkit-slider-runnable-track {
+    border-radius: 2px;
+
+    background: v.$cyan-dark;
+    height: 0.22rem;
+  }
+
+  /******** Firefox ********/
+  &::-moz-range-track {
+    border-radius: 2px;
+    background: v.$cyan-dark;
+    height: 0.22rem;
+  }
+
+  //Chrome, Safari, and Edge Chromium
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: v.$cyan-light;
+    border-radius: 100%;
+    margin-top: calc((0.22rem / 2) - (0.8rem / 2));
+  }
+
+  //Firefox
+  &::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: v.$cyan-light;
+    border-radius: 100%;
+    margin-top: calc((0.22rem / 2) - (0.8rem / 2));
+  }
+}

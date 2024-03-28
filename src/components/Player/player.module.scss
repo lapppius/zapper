@@ -1,0 +1,10 @@
+.player {
+  justify-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  background-color: v.$secondary-dark;
+}

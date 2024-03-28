@@ -23,7 +23,7 @@ export const radios = pgTable("radios", {
 	slug: varchar("slug", { length: 100 }).notNull().unique(),
 	logo: varchar("logo"),
 	description: text("description"),
-	stream: varchar("stream", { length: 150 }).notNull(),
+	stream: varchar("stream", { length: 255 }).notNull(),
 	createdAt: timestamp("created_at").defaultNow(),
 	wikidataId: varchar("wikidata_id", { length: 50 }),
 	lat: doublePrecision("lat"),
