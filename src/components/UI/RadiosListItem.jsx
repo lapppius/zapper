@@ -63,7 +63,9 @@ export default function RadiosListItem({
         <PlayPauseButton title={title} setCurrent={setCurrent} id={id} />
         <RadiosListItemPlayingAnimation id={id} />
       </div>
-      <Link href={`/radio/${id != null ? slug : ""}`}>{title}</Link>
+      <div className={styles.titleContainer}>
+        <Link href={`/radio/${id != null ? slug : ""}`}>{title}</Link>
+      </div>
     </li>
   );
 }

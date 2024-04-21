@@ -13,7 +13,6 @@ import LoadingDots from "../UI/Icons/LoadingDots";
 export default function PlayerControls({
   logoUrl,
   time,
-  progress,
   slug,
   playing,
   waiting,
@@ -24,7 +23,7 @@ export default function PlayerControls({
 
   return (
     <div className={styles.controls}>
-      <Progress time={time} progress={progress} duration={duration} />
+      <Progress time={time} duration={duration} />
       <div className={styles.artworkDuration}>
         <Artwork logoUrl={logoUrl} slug={slug} />
       </div>

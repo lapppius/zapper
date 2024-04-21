@@ -7,14 +7,10 @@ import TrashIcon from "../UI/Icons/TrashIcon";
 import { deleteThisRadio } from "./actions";
 
 export default function AdminDeleteRadio({ radio }) {
+  const deleteRadioWithId = deleteThisRadio.bind(null, radio.id);
   return (
     <Modal icon={<TrashIcon />} title={`Διαγραφή ${radio.name}`}>
-      <Form
-        action={() => {
-          deleteThisRadio(radio.id);
-        }}
-        submitTitle={"Delete"}
-      ></Form>
+      <Form action={deleteRadioWithId} submitTitle={"Delete"}></Form>
     </Modal>
   );
 }

@@ -1,7 +1,19 @@
 .radiosList {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  width: fit-content;
-  height: fit-content;
+  flex-flow: column nowrap;
+  row-gap: 0.5rem;
+  margin: 0.5rem;
+
+  h1 {
+    width: fit-content;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    row-gap: 0.5rem;
+    width: fit-content;
+    height: fit-content;
+  }
 }

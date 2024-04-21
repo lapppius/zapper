@@ -1,0 +1,26 @@
+.navLink {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: v.$secondary-light;
+
+  &:hover {
+    a {
+      background-color: v.$cyan-dark;
+      text-decoration: none;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    border-radius: v.$radius;
+    padding: 0.25rem 0.5rem;
+    transition: outline-color 0.2s ease-in-out;
+  }
+}
+
+.active {
+  font-weight: 600;
+  outline: 1px solid v.$secondary-light;
+}
+//font-semibold border border-1 border-[var(--cream)]

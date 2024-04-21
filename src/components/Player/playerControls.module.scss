@@ -8,6 +8,7 @@
   width: 100%;
   column-gap: 0.5rem;
   padding: 0.5rem;
+
   button {
     background-color: transparent;
     border: none;
@@ -16,7 +17,6 @@
     justify-content: center;
     align-items: center;
     cursor: default;
-    margin: 0 0.4rem;
     padding: 0;
     width: -webkit-fit-content;
     width: -moz-fit-content;
@@ -31,24 +31,13 @@
     width: 2.2rem;
     height: 2.2rem;
   }
-}
 
-.mainControls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  grid-column: 2 / span 3;
-  grid-row: 1 / span 1;
-}
-
-.controls span.material-icons:hover {
-  cursor: pointer;
+  span.material-icons:hover {
+    cursor: pointer;
+  }
 }
 
 .sideControls {
-  grid-area: side_controls;
   grid-column: 5 / span 1;
   grid-row: 1 / span 2;
 }
@@ -64,6 +53,35 @@
   justify-items: start;
   grid-column: 1 / span 1;
   grid-row: 1 / span 2;
+}
+
+.mainControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 1;
+}
+
+@media only screen and (max-width: v.$md-screen-width) {
+  .controls {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto 1fr auto auto;
+  }
+
+  .sideControls,
+  .artworkDuration {
+    grid-row: 2 / span 2;
+  }
+  .mainControls {
+    grid-row: 2 / span 1;
+  }
+}
+
+span.material-icons:hover {
+  cursor: pointer;
 }
 
 .artwork {

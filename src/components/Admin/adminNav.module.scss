@@ -4,6 +4,7 @@
   box-sizing: border-box;
   height: fit-content;
   box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 
   @media only screen and (min-width: v.$md-screen-width) {
     nav > select {

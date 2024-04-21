@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 100%;
+  height: fit-content;
+  gap: 0.3rem;
+  margin: 0.5rem 0;
+  list-style: none;
+  background-color: transparent;
+
+  @media only screen and (min-width: v.$md-screen-width) {
+    justify-content: center;
+    flex-flow: row wrap;
+  }
+}

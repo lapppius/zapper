@@ -1,0 +1,20 @@
+.userLayout {
+  display: grid;
+  grid-row-gap: 0.5rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: v.$content-width;
+
+  & > * {
+    padding: 0.5rem;
+    background-color: v.$secondary-dark;
+    border-radius: v.$radius;
+    border: 0.1rem solid hwb(230 10% 70%);
+  }
+
+  @media only screen and (min-width: v.$md-screen-width) {
+    margin: 0.5rem;
+  }
+}

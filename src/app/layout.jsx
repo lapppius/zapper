@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Player from "../components/Player/Player";
+import { Provider } from "jotai";
+
 import "./globals.scss";
 
 import { Manrope } from "next/font/google";
@@ -23,9 +25,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={manrope.className}>
       <body>
-        <Header />
-        <div className="rootLayout">{children}</div>
-        <Player />
+        <Provider>
+          <Header />
+          <div className="rootLayout">
+            {children}
+          </div>
+          <Player />
+        </Provider>
       </body>
     </html>
   );

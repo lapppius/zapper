@@ -1,44 +1,73 @@
 .slider {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: transparent;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   position: relative;
 
-  /***** Track Styles *****/
-  /***** Chrome, Safari, Opera, and Edge Chromium *****/
-  &::-webkit-slider-runnable-track {
-    border-radius: 2px;
-
-    background: v.$cyan-dark;
-    height: 0.22rem;
-  }
-
-  /******** Firefox ********/
-  &::-moz-range-track {
-    border-radius: 2px;
-    background: v.$cyan-dark;
-    height: 0.22rem;
-  }
-
-  //Chrome, Safari, and Edge Chromium
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 0.8rem;
-    width: 0.8rem;
-    background-color: v.$cyan-light;
-    border-radius: 100%;
-    margin-top: calc((0.22rem / 2) - (0.8rem / 2));
-  }
-
-  //Firefox
-  &::-moz-range-thumb {
+  input {
+    appearance: none;
     -moz-appearance: none;
-    height: 0.8rem;
-    width: 0.8rem;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+
+    /***** Track Styles *****/
+    /***** Chrome, Safari, Opera, and Edge Chromium *****/
+    &::-webkit-slider-runnable-track {
+      border-radius: 2px;
+      background: v.$cyan-dark;
+      height: 0.22rem;
+    }
+
+    /******** Firefox ********/
+    &::-moz-range-track {
+      border-radius: 2px;
+      background: v.$cyan-dark;
+      height: 0.22rem;
+    }
+
+    //Chrome, Safari, and Edge Chromium
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 12px;
+      width: 12px;
+      background-color: v.$cyan-light;
+      border-radius: 100%;
+      margin-top: calc((0.22rem / 2) - (0.8rem / 2));
+      visibility: hidden;
+    }
+
+    //Firefox
+    &::-moz-range-thumb {
+      visibility: hidden;
+      -moz-appearance: none;
+      height: 12px;
+      width: 12px;
+      background-color: v.$cyan-light;
+      border-radius: 100%;
+      margin-top: calc((0.22rem / 2) - (0.8rem / 2));
+      transition: width 0.5s ease-in-out;
+    }
+
+    &:hover {
+      &::-webkit-slider-thumb {
+        visibility: visible;
+      }
+      &::-moz-range-thumb {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__seekedBar {
     background-color: v.$cyan-light;
-    border-radius: 100%;
-    margin-top: calc((0.22rem / 2) - (0.8rem / 2));
+    z-index: 1;
+    // transition: width 0.2s ease-in-out;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    border-radius: 1rem;
   }
 }

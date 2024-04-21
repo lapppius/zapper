@@ -22,8 +22,18 @@
 body {
   color: var(--light);
   height: 100dvh;
-  background-color: v.$dark;
-  background-image: v.$background-noise;
+  // background-color: v.$dark;
+  // background-image: v.$background-noise;
+  background: v.$dark;
+  background: -moz-linear-gradient(190deg, v.$secondary-dark 0%, v.$dark 70%);
+  background: -webkit-linear-gradient(
+    190deg,
+    v.$secondary-dark 0%,
+    v.$dark 70%
+  );
+  background: linear-gradient(190deg, v.$secondary-dark 0%, v.$dark 70%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr={v.$secondary-dark},endColorstr={v.$dark},GradientType=1);
+
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
@@ -33,11 +43,11 @@ body {
 .rootLayout {
   position: relative;
   display: flex;
-  justify-content: center;
-  flex: 1 1 auto;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex: auto;
   width: 100%;
-  max-width: v.$wide-width;
-  overflow: auto;
+  overflow-y: auto;
   height: fit-content;
 }
 

@@ -16,9 +16,6 @@ module.exports = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
-      { protocol: "https", hostname: "picsum.photos" },
-      { protocol: "https", hostname: "upload.wikimedia.org" },
-      { protocol: "https", hostname: "velvet968.gr" },
     ],
   },
   sassOptions: {

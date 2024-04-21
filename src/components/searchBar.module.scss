@@ -1,0 +1,58 @@
+.search {
+  display: flex;
+  height: 35px;
+  max-width: 100%;
+  flex: auto;
+  border-radius: 20px;
+  border: 1px solid gray;
+  overflow: hidden;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+
+    svg {
+      fill: gray;
+    }
+
+    &:hover svg {
+      fill: rgb(255, 255, 255);
+    }
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    width: 100%;
+
+    &::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    &::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    /* clears the ‘X’ from Chrome */
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

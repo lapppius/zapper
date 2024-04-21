@@ -1,16 +1,24 @@
 .radiosListItem {
-  height: auto;
-  width: auto;
-  border-radius: v.$radius;
-  padding: 0.8rem;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  height: fit-content;
+  width: 10rem;
+  padding: 0.8rem;
   row-gap: 0.5rem;
+  border-radius: v.$radius;
 
   &:hover {
     background-color: v.$secondary-dark;
     cursor: pointer;
 
+    button {
+      opacity: 100;
+      // transform: translateY(-5px);
+    }
+  }
+
+  @media only screen and (max-width: v.$md-screen-width) {
     button {
       opacity: 100;
       // transform: translateY(-5px);
@@ -26,7 +34,8 @@
   border-radius: v.$radius;
   display: flex;
   align-items: center;
-  background-color: v.$dark;
+  justify-content: center;
+  backdrop-filter: invert(0.8);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 
   img {
@@ -40,6 +49,13 @@
     bottom: 0;
     margin: 0.35rem;
   }
+}
+
+.titleContainer {
+  width: 100%;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
 }
 
 .active {

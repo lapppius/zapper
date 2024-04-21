@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  flex: auto;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: fit-content;
+  max-width: v.$wide-width;
+}

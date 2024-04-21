@@ -9,4 +9,6 @@ export const playerAtom = atom({
   slug: null,
   curId: null,
   volume: 0.5,
+  player: null,
+  buffered: 0,
 });

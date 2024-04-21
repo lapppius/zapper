@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid v.$cyan-dark;
+  width: 100%;
+  height: fit-content;
+  padding: 0.5rem;
+
+  ul {
+    font-size: 0.85rem;
+    color: v.$cyan-light;
+    display: flex;
+    column-gap: 0.5rem;
+  }
+  small {
+    color: rgba(128, 128, 128, 0.9);
+  }
+}

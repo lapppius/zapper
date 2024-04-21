@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: fit-content;
+  grid-row: 1 / span 1;
+
+  justify-content: flex-start;
+  grid-column: 1 / span 2;
+
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    img {
+      object-fit: cover;
+      border-radius: 100%;
+      box-shadow: v.$box-shadow;
+    }
+  }
+
+  &__imageNameDateContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: end;
+    justify-content: space-between;
+    column-gap: 0.5rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-wrap: nowrap;
+    }
+
+    h2 {
+      color: hwb(0 73% 27%);
+    }
+  }
+
+  @media only screen and (max-width: v.$md-screen-width) {
+    grid-column: 1 / span 1;
+    justify-content: center;
+  }
+}

@@ -5,71 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1710323566030,
-      "tag": "0000_graceful_chronomancer",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1710323590833,
-      "tag": "0001_natural_celestials",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1710323623419,
-      "tag": "0002_harsh_luckman",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1710360643420,
-      "tag": "0003_sour_natasha_romanoff",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1710364450393,
-      "tag": "0004_zippy_cammi",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1710410646275,
-      "tag": "0005_flimsy_toxin",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1710412550781,
-      "tag": "0006_talented_paper_doll",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "5",
-      "when": 1710417634495,
-      "tag": "0007_unusual_wendigo",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "5",
-      "when": 1711585780695,
-      "tag": "0008_clean_diamondback",
-      "breakpoints": true
-    },
-    {
-      "idx": 9,
-      "version": "5",
-      "when": 1711585935022,
-      "tag": "0009_happy_gabe_jones",
+      "when": 1711650420376,
+      "tag": "0000_stiff_skullbuster",
       "breakpoints": true
     }
   ]

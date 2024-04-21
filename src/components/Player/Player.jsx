@@ -1,47 +1,68 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 // import NowPlaying from "./NowPlaying";
 import styles from "./player.module.scss";
 import PlayerControls from "./PlayerControls";
 import { useAtom } from "jotai";
 import { playerAtom } from "./PlayerAtom";
 import { DevTools } from "jotai-devtools";
-import shaka from "shaka-player";
+import { getMimeType, getExtensionFromURL } from "./utils/getMIMEtype";
+import { getDuration } from "./utils/getDuration";
+
+const dashjs = dynamic(() => import("dashjs"));
 
 export default function Player() {
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [player, setPlayer] = useState(null);
+
+  // const [player, setPlayer] = useState(null);
   const [playerState, setPlayerState] = useAtom(playerAtom);
-  const { streamUrl, logoUrl, slug, playing, waiting, volume } =
+  const { streamUrl, logoUrl, slug, playing, waiting, player } =
     useAtom(playerAtom)[0];
   const audioRef = useRef(null);
 
   const initPlayer = async () => {
-    const player = new shaka.Player();
-    player.configure({
-      streaming: {
-        retryParameters: {
-          maxAttempts: 3,
-        },
-      },
-    });
-    await player.attach(audioRef.current);
-    setPlayer(player);
+    const player = audioRef.current;
+    // setPlayer(player);
+    setPlayerState({ ...playerState, player: player });
     console.log("init player");
+  };
+
+  const loadStreamIndirectly = async (streamUrl) => {
+    const extension = await getExtensionFromURL(streamUrl);
+    console.info("Detected extension :", extension);
+    if (extension == null) {
+      const mimeType = await getMimeType(streamUrl);
+      console.info("Detected MIME type:", mimeType);
+    }
+
+    if (extension) {
+      initializeDashjs(audioRef.current, streamUrl);
+    }
   };
 
   const loadStream = async (streamUrl) => {
     try {
-      await player.load(streamUrl);
+      try {
+        player.src = streamUrl;
+        player.load();
+        player.play();
+      } catch (error) {
+        await loadStreamIndirectly(streamUrl);
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
+  const initializeDashjs = (audio, streamUrl) => {
+    const player = dashjs.MediaPlayer().create();
+    player.initialize(audio, streamUrl, true);
+  };
+
   const toggle = () => {
-    console.log("toggled");
+    if (!streamUrl) return;
     if (playing) {
       audioRef.current.pause();
     } else {
@@ -51,21 +72,20 @@ export default function Player() {
 
   useEffect(() => {
     initPlayer();
+    return () => {
+      setPlayerState({ ...playerState, player: null });
+    };
   }, []);
 
   useEffect(() => {
     if (player && streamUrl) {
       loadStream(streamUrl);
     }
-  }, [streamUrl, player]);
-
-  useEffect(() => {
-    audioRef.current.volume = volume;
-  }, [volume]);
+  }, [streamUrl]);
 
   return (
     <>
-      <DevTools position="left-right" theme="dark" />
+      {/* <DevTools position="left-right" theme="dark" /> */}
       <div className={`${styles.player}`}>
         <div className="max-w-[var(--wide-width)] w-full">
           {/* <NowPlaying /> */}
@@ -74,11 +94,19 @@ export default function Player() {
             crossOrigin="anonymous"
             ref={audioRef}
             onTimeUpdate={(e) => {
+              setDuration(getDuration(e.target));
               setTime(e.target.currentTime);
-              setDuration(e.target.duration);
+            }}
+            onError={() => {
+              setPlayerState({
+                ...playerState,
+                playing: false,
+                waiting: false,
+              });
+              loadStreamIndirectly(streamUrl);
             }}
             onPause={() => {
-              console.log("onpause");
+              console.info("onpause");
               setPlayerState({
                 ...playerState,
                 playing: false,
@@ -88,61 +116,80 @@ export default function Player() {
               setPlayerState({ ...playerState, playing: true });
             }}
             onCanPlay={() => {
-              console.log(
-                "onCanPlay (can play the media, not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.)"
+              console.info(
+                "onCanPlay"
+                // " (can play the media, not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.)"
               );
-              setPlayerState({ ...playerState, playing: true, waiting: false });
               audioRef.current.play();
             }}
             onCanPlayThrough={() => {
-              console.log(
-                "onCanPlayThrough (enough data has been loaded to play the media up to its end without having to stop for further buffering of content.)"
+              console.info(
+                "onCanPlayThrough"
+                // "(enough data has been loaded to play the media up to its end without having to stop for further buffering of content.)"
+              );
+            }}
+            onPlaying={(e) => {
+              setPlayerState({ ...playerState, playing: true, waiting: false });
+              console.info(
+                "onPlaying (is fired after playback is first started, and whenever it is restarted. For example it is fired when playback resumes after having been paused or delayed due to lack of data)"
               );
             }}
             onWaiting={() => {
-              console.log(
-                "onWaiting (is fired when playback has stopped because of a temporary lack of data)"
+              console.info(
+                "onWaiting"
+                // "(is fired when playback has stopped because of a temporary lack of data)"
               );
-              setPlayerState({ ...playerState, playing: false, waiting: true });
+              setPlayerState({ ...playerState, waiting: true });
             }}
             onAbort={() => {
-              console.log("onAbort");
+              console.info("onAbort");
             }}
             onEmptied={() => {
-              console.log("onEmptied");
+              console.info("onEmptied");
             }}
             onSeeked={() => {
-              console.log("onSeeked");
-            }}
-            onSeeking={() => {
-              console.log("onSeeking");
-            }}
-            onLoadedData={() => {
-              console.log("onloadedData");
-            }}
-            onDurationChange={() => {
-              console.log("onDurationChange");
-            }}
-            onLoadedMetadata={(e) => {
-              console.log("onloadedMetadata", e);
-            }}
-            onProgress={(e) => {
-              setProgress(
-                e.target.buffered.length ? e.target.buffered.end(0) : 0
+              console.info(
+                "onSeeked ( is fired when a seek operation completed, the current playback position has changed)"
               );
             }}
+            onSuspend={(e) => {
+              console.info(
+                "onSuspend (is fired when media data loading has been suspended)"
+              );
+            }}
+            onSeeking={() => {
+              console.info("onSeeking");
+            }}
+            onLoadStart={(e) => {
+              console.info("onLoadStart");
+            }}
+            onLoadedData={(e) => {
+              console.info("onloadedData");
+            }}
+            onDurationChange={() => {
+              console.info("onDurationChange");
+            }}
+            onLoadedMetadata={(e) => {
+              console.info("onloadedMetadata", e);
+            }}
+            onProgress={(e) => {
+              console.info("onProgress");
+
+              setPlayerState({
+                ...playerState,
+                buffered: e.target.buffered.end(e.target.buffered.length - 1),
+              });
+            }}
             onLoad={(e) => {
-              console.log("onLoad", e);
+              console.info("onLoad", e);
             }}
             onVolumeChange={(e) => {
-              console.log("onVolumeChange", e.target.volume);
-              setPlayerState({ ...playerState, volume: e.target.volume });
+              console.info("onVolumeChange", e.target.volume);
             }}
-            controls
+            // controls
           />
           <PlayerControls
             time={time}
-            progress={progress}
             duration={duration}
             logoUrl={logoUrl}
             slug={slug}

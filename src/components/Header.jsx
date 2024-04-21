@@ -2,23 +2,31 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import NavLink from "./UI/NavLink";
 import Menu from "./UI/Menu";
+import { redirect } from "next/navigation";
 
 import styles from "./header.module.scss";
+import SearchBar from "./SearchBar";
 
 export default async function Header() {
-	const session = await auth();
+  const search = async (data) => {
+    "use server";
+    console.log(data);
+    redirect(`/search?q=${encodeURIComponent(data)}`);
+  };
 
-	return (
-		<>
-			<header className={styles.header}>
-				<nav>
-					<ul>
-						<NavLink title="Home" href="/" />
-						<NavLink title="Genres" href="/genres" />
-						<NavLink title="Countries" href="/countries" />
-						<NavLink title="About" href="/about" />
-					</ul>
-					<ul>
+  const session = await auth();
+
+  return (
+    <>
+      <header className={styles.header}>
+        <nav>
+          <ul>
+            <NavLink title="Home" href="/" />
+            <NavLink title="Genres" href="/genres" />
+            <NavLink title="Countries" href="/countries" />
+          </ul>
+          <SearchBar placeholder="Search Radios" action={search} />
+          {/* <ul>
 						{session?.user ? (
 							<div>
 								<li className="flex h-fit">
@@ -42,9 +50,9 @@ export default async function Header() {
 						) : (
 							<NavLink href="/login" title="Login" />
 						)}
-					</ul>
-				</nav>
-			</header>
-		</>
-	);
+					</ul> */}
+        </nav>
+      </header>
+    </>
+  );
 }

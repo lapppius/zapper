@@ -1,8 +1,12 @@
 {
     "cSpell.words": [
         "citext",
+        "Dashjs",
         "Firestore",
-        "smallserial"
+        "Ratelimit",
+        "smallserial",
+        "UPSTASH",
+        "videojs"
     ],
     "git.ignoreLimitWarning": true
 }

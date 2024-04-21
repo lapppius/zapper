@@ -1,12 +1,33 @@
-import { pgTable, unique, pgEnum, varchar, serial, text, timestamp, doublePrecision, foreignKey, primaryKey, integer } from "drizzle-orm/pg-core"
+import { pgTable, foreignKey, unique, pgEnum, smallserial, varchar, numeric, serial, text, timestamp, doublePrecision, smallint, primaryKey, integer } from "drizzle-orm/pg-core"
   import { sql } from "drizzle-orm"
 
 export const role = pgEnum("role", ['ADMIN', 'USER'])
 
 
-export const radio = pgTable("radio", {
+export const organization = pgTable("organization", {
+	id: smallserial("id").primaryKey().notNull(),
 	name: varchar("name", { length: 100 }).notNull(),
-	stream: varchar("stream", { length: 150 }).notNull(),
+	slug: varchar("slug", { length: 150 }).notNull(),
+	legalName: varchar("legal_name", { length: 100 }),
+	website: varchar("website", { length: 100 }),
+	countryId: numeric("country_id").references(() => country.numeric),
+},
+(table) => {
+	return {
+		organizationSlugUnique: unique("organization_slug_unique").on(table.slug),
+	}
+});
+
+export const country = pgTable("country", {
+	numeric: numeric("numeric").primaryKey().notNull(),
+	enName: varchar("en_name", { length: 200 }).notNull(),
+	alpha2Code: varchar("alpha2_code", { length: 2 }).notNull(),
+	alpha3Code: varchar("alpha3_code", { length: 3 }).notNull(),
+});
+
+export const radios = pgTable("radios", {
+	name: varchar("name", { length: 100 }).notNull(),
+	stream: varchar("stream", { length: 255 }).notNull(),
 	id: serial("id").primaryKey().notNull(),
 	logo: varchar("logo"),
 	slug: varchar("slug", { length: 100 }).notNull(),
@@ -14,11 +35,13 @@ export const radio = pgTable("radio", {
 	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
 	lat: doublePrecision("lat"),
 	lon: doublePrecision("lon"),
-	wikidataId: varchar("wikidataID", { length: 50 }),
+	wikidataId: varchar("wikidata_id", { length: 50 }),
+	organizationId: smallint("organization_id").references(() => organization.id),
+	countryNumeric: numeric("country_numeric").references(() => country.numeric),
 },
 (table) => {
 	return {
-		radioSlugUnique: unique("radio_slug_unique").on(table.slug),
+		radiosSlugUnique: unique("radios_slug_unique").on(table.slug),
 	}
 });
 
@@ -47,11 +70,12 @@ export const user = pgTable("user", {
 	emailVerified: timestamp("emailVerified", { mode: 'string' }),
 	image: text("image"),
 	role: role("role").default('USER').notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
 });
 
 export const radiosGenres = pgTable("radios_genres", {
-	radioId: integer("radio_id").notNull().references(() => radio.id),
-	genreId: integer("genre_id").notNull().references(() => genre.id),
+	radioId: integer("radio_id").notNull().references(() => radios.id, { onDelete: "cascade" } ),
+	genreId: integer("genre_id").notNull().references(() => genre.id, { onDelete: "cascade" } ),
 },
 (table) => {
 	return {

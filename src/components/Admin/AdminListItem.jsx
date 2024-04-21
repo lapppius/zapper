@@ -3,8 +3,10 @@ import Image from "next/image";
 import styles from "./adminListItem.module.scss";
 import AdminListItemInfo from "./AdminListItemInfo";
 import AdminEditItem from "./AdminEditItem";
+// import AdminDeleteItem from "./AdminDeleteItem";
+import AdminDeleteRadio from "./AdminDeleteRadio";
 
-export default function AdminListItem({ item, editAction }) {
+export default function AdminListItem({ item, editAction, children }) {
   return (
     <li key={item.slug} id={item.id} className={styles.adminListItem}>
       <div className={styles.imageContainer}>
@@ -23,11 +25,11 @@ export default function AdminListItem({ item, editAction }) {
         {/* </Link> */}
       </div>
       <AdminEditItem item={item} action={editAction} />
-      {/* 
-      <AdminDeleteRadio radio={radio} />
-    */}
-      <div>test</div>
+      {/* <AdminDeleteItem item={item} action={deleteAction} /> */}
+      <AdminDeleteRadio radio={item} />
+
       <AdminListItemInfo item={item} />
+      {children}
     </li>
   );
 }
