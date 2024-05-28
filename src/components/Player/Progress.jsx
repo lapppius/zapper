@@ -11,7 +11,7 @@ import {
 } from "./utils";
 import { useEffect, useState } from "react";
 
-export default function Progress({ progress, time, duration }) {
+export default function Progress({ time, duration }) {
   const { player, buffered } = useAtom(playerAtom)[0];
   const [seekTime, setSeekTime] = useState(0);
 

@@ -46,8 +46,9 @@ export async function editThisRadio(prevState, formData) {
   }
 }
 
-export async function deleteThisRadio(id) {
-  await deleteRadio(id);
+export async function deleteThisRadio(formData) {
+  console.log(formData);
+  await deleteRadio();
   revalidatePath("/admin/radios");
 }
 

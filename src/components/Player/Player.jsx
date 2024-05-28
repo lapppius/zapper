@@ -6,7 +6,7 @@ import styles from "./player.module.scss";
 import PlayerControls from "./PlayerControls";
 import { useAtom } from "jotai";
 import { playerAtom } from "./PlayerAtom";
-import { DevTools } from "jotai-devtools";
+// import { DevTools } from "jotai-devtools";
 import { getMimeType, getExtensionFromURL } from "./utils/getMIMEtype";
 import { getDuration } from "./utils/getDuration";
 
@@ -128,7 +128,7 @@ export default function Player() {
                 // "(enough data has been loaded to play the media up to its end without having to stop for further buffering of content.)"
               );
             }}
-            onPlaying={(e) => {
+            onPlaying={() => {
               setPlayerState({ ...playerState, playing: true, waiting: false });
               console.info(
                 "onPlaying (is fired after playback is first started, and whenever it is restarted. For example it is fired when playback resumes after having been paused or delayed due to lack of data)"
@@ -152,7 +152,7 @@ export default function Player() {
                 "onSeeked ( is fired when a seek operation completed, the current playback position has changed)"
               );
             }}
-            onSuspend={(e) => {
+            onSuspend={() => {
               console.info(
                 "onSuspend (is fired when media data loading has been suspended)"
               );
@@ -160,10 +160,10 @@ export default function Player() {
             onSeeking={() => {
               console.info("onSeeking");
             }}
-            onLoadStart={(e) => {
+            onLoadStart={() => {
               console.info("onLoadStart");
             }}
-            onLoadedData={(e) => {
+            onLoadedData={() => {
               console.info("onloadedData");
             }}
             onDurationChange={() => {
