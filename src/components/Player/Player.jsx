@@ -7,7 +7,7 @@ import PlayerControls from "./PlayerControls";
 import { useAtom } from "jotai";
 import { playerAtom } from "./PlayerAtom";
 // import { DevTools } from "jotai-devtools";
-import { getMimeType, getExtensionFromURL } from "./utils/getMIMEtype";
+import { getMimeType, getExtensionFromURL } from "./utils/getMimeType";
 import { getDuration } from "./utils/getDuration";
 
 const dashjs = dynamic(() => import("dashjs"));
