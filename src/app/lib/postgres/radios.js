@@ -1,5 +1,5 @@
 import db from "../db";
-import { eq, asc, desc, ilike, sql, or } from "drizzle-orm";
+import { eq, asc, desc, sql } from "drizzle-orm";
 import { radios } from "../schema/radios";
 import slugify from "@/utils/slugify";
 import extractWords from "@/utils/extractWords";

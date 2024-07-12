@@ -1,7 +1,4 @@
-import { auth } from "@/auth";
-import Image from "next/image";
 import NavLink from "./UI/NavLink";
-import Menu from "./UI/Menu";
 import { redirect } from "next/navigation";
 
 import styles from "./header.module.scss";
@@ -13,8 +10,6 @@ export default async function Header() {
     console.log(data);
     redirect(`/search?q=${encodeURIComponent(data)}`);
   };
-
-  const session = await auth();
 
   return (
     <>

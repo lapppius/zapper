@@ -1,4 +1,4 @@
-import { getRadios } from "../lib/postgres/radios";
+import { getRadios } from "../../lib/postgres/radios";
 import RadiosList from "@/components/UI/RadiosList";
 
 export default async function Search({ searchParams }) {
