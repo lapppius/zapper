@@ -6,6 +6,8 @@ import "./globals.scss";
 
 import { Manrope } from "next/font/google";
 
+export const runtime = "edge"; // 'nodejs' (default) | 'edge' for cloudflare build
+
 export const metadata = {
   metadataBase: process.env.VERCEL_URL
     ? new URL(`https://${process.env.VERCEL_URL}`)
@@ -27,9 +29,7 @@ export default function RootLayout({ children }) {
       <body>
         <Provider>
           <Header />
-          <div className="rootLayout">
-            {children}
-          </div>
+          <div className="rootLayout">{children}</div>
           <Player />
         </Provider>
       </body>

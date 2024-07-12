@@ -1,6 +1,5 @@
 import AdminList from "./AdminList";
 import { deleteThisRadio, editThisRadio } from "@/components/Admin/actions";
-import AdminDeleteRadio from "./AdminDeleteRadio";
 
 // import Pagination from "@/components/UI/Pagination";
 

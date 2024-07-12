@@ -52,7 +52,7 @@ export default function RadiosListItem({
       key={id}
       id={id}
       onClick={(e) => {
-        router.push(`radio/${slug}`);
+        router.push(`/radio/${slug}`);
         e.stopPropagation();
       }}
     >
