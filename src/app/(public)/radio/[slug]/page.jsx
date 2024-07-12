@@ -5,6 +5,7 @@ import { getRadioBySlug } from "@/app/lib/postgres/radios";
 
 export async function generateMetadata({ params }) {
 	const radio = await getRadioBySlug(params.slug);
+	
 	return {
 		title: radio?.name,
 		description: radio?.description,

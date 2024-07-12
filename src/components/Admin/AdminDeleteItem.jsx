@@ -3,10 +3,10 @@ import Modal from "../UI/Modal";
 import Form from "../UI/Form";
 import TrashIcon from "../UI/Icons/TrashIcon";
 
-export default function AdminDeleteItem({ item, deleteAction }) {
+export default function AdminDeleteItem({ item, action }) {
   return (
     <Modal icon={<TrashIcon />} title={`Διαγραφή ${item.name}`}>
-      <Form action={deleteAction} submitTitle={"Delete"}></Form>
+      <Form action={action} submitTitle={"Delete"}></Form>
     </Modal>
   );
 }
