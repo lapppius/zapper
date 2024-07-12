@@ -12,7 +12,7 @@
     "migrate": "node -r esbuild-register migrate.ts"
   },
   "dependencies": {
-    "@auth/core": "^0.28.2",
+    "@auth/core": "^0.29.0",
     "@auth/drizzle-adapter": "^0.8.2",
     "@aws-sdk/client-s3": "^3.583.0",
     "@emotion/react": "^11.11.4",
