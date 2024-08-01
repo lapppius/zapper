@@ -29,7 +29,7 @@
     "drizzle-orm": "^0.31.4",
     "esbuild-register": "^3.5.0",
     "jotai": "^2.9.0",
-    "next": "14.2.4",
+    "next": "14.2.5",
     "next-auth": "5.0.0-beta.15",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
